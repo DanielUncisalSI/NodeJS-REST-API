@@ -1,10 +1,36 @@
 const express = require('express');
 const router = express.Router();
+const mysql = require('..//mysql').pool
 
-// retorna todos os pedido
+// retorna todos os pedidos com tratamento de erros
 router.get('/', function(req, res){
-    res.status(200).send({
-        mensagem:'Usando o GET na rota Pedidos'
+    
+    mysql.getConnection(function(error, conn){
+        if(error){return res.status(500).send({error : error })}
+        conn.query(
+            'SELECT * FROM PEDIDOS',
+            function(error, result){
+                if(error){return res.status(500).send({eror : error})}
+                const response = {
+                    quantidadeRegistros : result.length,
+                    produtos: result.map(ped=>{
+                        return {
+                            id_pedido : ped.id,
+                            quantidade : ped.quantidade,
+                            id_produto : ped.id_produto,
+                            request:{
+                                tipo: 'GET',
+                                descricao : 'Retorna os detalhes de um pedido especifico',
+                                url : 'http://localhost:3000/pedidos/'+ ped.id
+   
+                            }
+                        }
+                    })
+                }
+                return res.status(200).send(response)
+            }
+            
+            )
     })
 })
 
