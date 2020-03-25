@@ -34,7 +34,7 @@ router.get('/', function(req, res){
     })
 })
 
-// insere um pedido
+// inserir um pedido
 router.post('/',function(req, res){
     pedido ={
         id_produto: req.body.id_produto,

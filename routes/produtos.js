@@ -49,8 +49,8 @@ router.get('/',function(req, res){
 
 
 //inseir produto completo com tratamento de erros
-router.post('/',(req, res, next)=>{  
-    mysql.getConnection((error, conn) => {
+router.post('/',function(req, res){  
+    mysql.getConnection(function(error, conn){
         if(error){return res.status(500).send({error: error})}
         conn.query(
             'INSERT INTO PRODUTOS (nome, preco) VALUES (?,?)',
