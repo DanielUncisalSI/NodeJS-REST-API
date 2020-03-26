@@ -1,5 +1,7 @@
+//importando MYSQL
 const mysql = require('mysql');
 
+//criando connexão com o banco
 var pool = mysql.createPool({
 "user" : "ubtlogistica8",
 "password" : "Nma55171", 
