@@ -9,7 +9,7 @@ router.get('/',function(req, res){
         conn.query(
             'SELECT * FROM PRODUTOS',
               //o segundo parametro é onde fica armazenado o resultado da query pode ser usado quaquer nome 
-            (error, result, field)=>{
+            function(error, result){
                 if(error){ return res.status(500).send({error: error})}
                 const response ={
                  quantidade : result.length,
@@ -99,7 +99,7 @@ router.get('/:id_produto',(req, res)=>{
         if(error){ return res.status(500).send({ error : error})}
         conn.query('SELECT * FROM PRODUTOS WHERE ID = ?',
         [req.params.id_produto],
-          (error, result, fields) =>{
+           (error, result) =>{
               if(error){return res.status(500).send({error : error})}
               if(result.length == 0){
                   return res.status(404).send({
