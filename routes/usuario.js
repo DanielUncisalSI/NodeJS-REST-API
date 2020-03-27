@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const mysql = require('../mysql').pool
-const crypto = require("crypto")
+const bcrypt = require('bcrypt')
 
+/*const crypto = require("crypto")
 const DADOS_CRIPTOGRAFAR = {
     algoritmo : "aes256",
     segredo : "chaves",
@@ -14,7 +15,44 @@ const DADOS_CRIPTOGRAFAR = {
     cipher.update(senha)
     return cipher.final(DADOS_CRIPTOGRAFAR.tipo)
 }
+*/
+//cadastrar usuario
+router.post('/',function(req, res){
+    mysql.getConnection(function(error, conn){
+        if(error){ return res.status(500).send({erro : error})}
+        conn.query('SELECT * FROM USUARIOS WHERE email = ?',
+        [req.body.email],
+        function(error, result){
+            if(error){ return res.status(500).send({error : error})}
+            if(result.length>0){
+                res.status(409).send({ mensagem: 'Usuário já cadastrado' })
+            }else{
+                bcrypt.hash(req.body.senha, 10, function(errBcrypt, hash){
+                    if(errBcrypt){ return res.status(500).send({error : errBcrypt})}
+                    conn.query('INSERT INTO USUARIOS (email, senha) VALUES (?, ?)',
+                    [req.body.email, hash],
+                    function(error, result){
+                        conn.release()
+                        if(error){ return res.status(500).send({error : error})}
+                        var response = {
+                            mensagem: 'Usuário criado com sucesso!',
+                            usuarioCriado:{
+                                id_usuario: result.insertId,
+                                email: req.body.email
+                            }
+                        }
+                        return res.status(201).send({response})
+                    })
+                })
+            }
+        })
+      
+        
+    })
+})
 
+
+//login usuario
 router.get('/',function(req, res){
  mysql.getConnection(function(error, conn){
      if(error){ return res.status(500).send({erro : error})}
@@ -27,7 +65,7 @@ router.get('/',function(req, res){
          if(result.length == 0){
              return res.status(404).send({mensagem: 'email ou usuário incorreto'})
          }
-         if((result.length > 0) && (result[0].ATIVO == "N" )){
+         if( result[0].ATIVO == "N" ){
              return res.status(200).send({mensagem : 'Usuário bloqueado!'})
          }
          const response = {
@@ -35,7 +73,7 @@ router.get('/',function(req, res){
             ID : result[0].ID,
             Aitvo : result[0].ATIVO,
             Email : result[0].EMAIL,
-            Senha : criptografar(result[0].SENHA)
+            Senha : result[0].SENHA
          }
          return res.status(200).send(response)
      }
