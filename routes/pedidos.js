@@ -69,7 +69,10 @@ router.post('/', function (req, res) {
 router.get('/:id', function (req, res) {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query('SELECT * FROM PEDIDOS WHERE ID = ?',
+        conn.query(
+            `SELECT ped.id, ped.quantidade, ped.id_produto, prod.nome FROM PEDIDOS as ped 
+            INNER JOIN PRODUTOS AS prod ON ped.id_produto = prod.id AND ped.id = ?`,
+            //'SELECT * FROM PEDIDOS WHERE ID = ?',
             [req.params.id],
             function (error, result) {
                 if (error) { return res.status(500).send({ error: error }) }
@@ -82,6 +85,7 @@ router.get('/:id', function (req, res) {
                     pedido: {
                         id_pedido: result[0].id,
                         id_produto: result[0].id_produto,
+                        nomeProduto: result[0].nome,
                         quantidade: result[0].quantidade,
                         request: {
                             tipo: 'GET',

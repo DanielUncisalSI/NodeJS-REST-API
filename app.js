@@ -6,7 +6,10 @@ const bodyParser = require('body-parser')
 const rotaProdutos = require('./routes/produtos')
 const rotaPedidos = require('./routes/pedidos') 
 const rotaUsuarios = require('./routes/usuario')
+var cors = require('cors');
 
+// use it before all route definitions
+app.use(cors({origin: 'http://localhost:3000'}));
 
 app.use(express.json())
 app.use(bodyParser.urlencoded(
@@ -14,15 +17,17 @@ app.use(bodyParser.urlencoded(
 app.use(bodyParser.json()) //so aceita json de entrada no body
 
 app.use((req, res, next)=>{
-    res.header('Acces-Control-Allow-Origin','*')
+    res.header('Access-Control-Allow-Origin','*')
     res.header(
-        'Acces-Control-Allow-Header',
+        'Access-Control-Allow-Header',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     )
     if(req.method === 'OPTIONS'){
         req.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET')
         return res.status(200).send({})
     }
+
+    
     next()
 })
 //app.use(morgan('dev'))
