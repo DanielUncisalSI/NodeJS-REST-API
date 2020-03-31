@@ -17,7 +17,7 @@ const DADOS_CRIPTOGRAFAR = {
 }
 */
 //cadastrar usuario
-router.post('/',function(req, res){
+router.post('/cadastro',function(req, res){
     mysql.getConnection(function(error, conn){
         if(error){ return res.status(500).send({erro : error})}
         conn.query('SELECT * FROM USUARIOS WHERE email = ?',
@@ -45,15 +45,13 @@ router.post('/',function(req, res){
                     })
                 })
             }
-        })
-      
-        
+        })    
     })
-})
+}) 
 
 
 //login usuario
-router.get('/',function(req, res){
+router.get('/loginIncomplet',function(req, res){
  mysql.getConnection(function(error, conn){
      if(error){ return res.status(500).send({erro : error})}
      conn.query('SELECT * FROM USUARIOS WHERE EMAIL = ? AND SENHA = ? ',
@@ -81,5 +79,29 @@ router.get('/',function(req, res){
  })
 
 })
+
+router.post('/login',function(req, res){
+  mysql.getConnection(function(error, conn){
+     if(error){ return res.status(500).send({erro : error})}
+     conn.query('SELECT * FROM USUARIOS WHERE EMAIL = ?', 
+  [req.body.email],
+  function(error, result){
+  conn.release()
+   if(error){ return res.status(500).send({error :error})}
+   if(result.length < 1){
+       return res.status(401).send({mensagem : "Falha na autorização"})
+   }
+   //compara se a senha criptografada é igual, pois não consegue discriptografar
+   bcrypt.compare(req.body.senha, result[0].senha, function(err, result){
+   if(err){return res.status(401).send({mensagem : "Falha na autorização"})}
+   //se a senha estiver correta armazena no result
+   if(result){return res.status(200).send({mensagem: "Autenticado com sucesso!"})} 
+   return res.status(401).send({mensagem : "Falha na autorização"})
+})
+  })
+  })
+  })
+
+
 
 module.exports = router;
