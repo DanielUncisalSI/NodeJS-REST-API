@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 /*const crypto = require("crypto")
 const DADOS_CRIPTOGRAFAR = {
@@ -80,7 +81,7 @@ router.get('/loginIncomplet',function(req, res){
 
 })
 
-router.post('/login',function(req, res){
+/*router.post('/login',function(req, res){
   mysql.getConnection(function(error, conn){
      if(error){ return res.status(500).send({erro : error})}
      conn.query('SELECT * FROM USUARIOS WHERE EMAIL = ?', 
@@ -100,8 +101,39 @@ router.post('/login',function(req, res){
 })
   })
   })
-  })
+  })*/
 
-
+  router.post('/login', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if(error) { return res.status(500).send({ error: error})}
+        const query = `SELECT * FROM USUARIOS WHERE email = ?`;
+        conn.query(query,[req.body.email],(error, results, fields) => {
+            conn.release();
+            if(error) { return res.status(500).send({ error: error})}
+            if ( results.length < 1) {
+                return res.status(401).send({ mensagem: 'Falha na autenticação 113!'})
+            }
+            bcrypt.compare(req.body.senha, results[0].senha, (err, result) => {
+                if (err) {
+                    return res.status(401).send({ mensagem: 'Falha na autenticação compare !'})
+                }
+                if (result) {
+                    const token = jwt.sign({
+                        id_usuario: results[0].id,
+                        email: results[0].email
+                    }, 
+                    process.env.JWT_KEY,
+                    {
+                        expiresIn: "1h"
+                    });
+                    return res.status(200).send({ mensagem: 'Autenticado com sucesso',
+                    token: token
+                    });
+                }
+                return res.status(401).send({mensagem: 'Falha na autenticação!'})
+            });
+        });
+    });
+})
 
 module.exports = router;
