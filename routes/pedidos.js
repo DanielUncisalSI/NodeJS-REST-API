@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
                 if (error) { return res.status(500).send({ eror: error }) }
                 const response = {
                     quantidadeRegistros: result.length,
-                    produtos: result.map(ped => {
+                    pedidos: result.map(ped => {
                         return {
                             id_pedido: ped.id,
                             quantidade: ped.quantidade,
@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
 })
 
 // inserir um pedido
-router.post('/', function (req, res) {
+router.post('/cadastro', function (req, res) {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(

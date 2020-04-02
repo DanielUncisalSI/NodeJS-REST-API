@@ -57,7 +57,7 @@ router.post('/',function(req, res){
             [req.body.nome, req.body.preco],
             (error, result, field) => {
             conn.release()
-            if(error){return res.status(500).send({error : error})}
+            if(error){return res.status(500).send({error : error })}
             const response = {
                 mensagem : 'Produto inserido com sucesso!',
                 produtoCriado:{
