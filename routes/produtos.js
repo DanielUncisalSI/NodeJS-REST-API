@@ -21,7 +21,7 @@ router.get('/lista',function(req, res){
                          request:{
                              tipo: 'GET',
                              descricao : 'Retorna os detalhes de um produto especifico',
-                             url : 'http://localhost:3000/produtos/'+ prod.id
+                             url : 'http://localhost:3000/produtos/localiza/'+ prod.id
 
                          }
                      }
@@ -29,7 +29,6 @@ router.get('/lista',function(req, res){
                 }
                 return res.status(200).send(response)
             }
-         
        )
     })
 })
@@ -49,7 +48,7 @@ router.get('/lista',function(req, res){
 
 
 //inseir produto completo com tratamento de erros
-router.post('/',function(req, res){  
+router.post('/cadastro',function(req, res){  
     mysql.getConnection(function(error, conn){
         if(error){return res.status(500).send({error: error})}
         conn.query(
@@ -94,7 +93,7 @@ router.post('/',function(req, res){
 
 
 //retorna apenas um produto por ID com tratamento de erros
-router.get('/:id_produto',(req, res)=>{
+router.get('/localiza/:id_produto',(req, res)=>{
     mysql.getConnection((error, conn) => {
         if(error){ return res.status(500).send({ error : error})}
         conn.query('SELECT * FROM PRODUTOS WHERE ID = ?',

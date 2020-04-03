@@ -18,7 +18,7 @@ app.use(bodyParser.json()) //so aceita json de entrada no body
 
 app.use((req, res, next)=>{
     res.header('Access-Control-Allow-Origin','*')
-    res.header(
+                res.header(
         'Access-Control-Allow-Header',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     )
@@ -26,8 +26,6 @@ app.use((req, res, next)=>{
         req.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET')
         return res.status(200).send({})
     }
-
-    
     next()
 })
 //app.use(morgan('dev'))
