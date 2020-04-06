@@ -136,32 +136,26 @@ $(document).ready(function () {
   })
   
   
-  //lista os produtos
+  //teste lista os produtos
 $(document).ready(function(){
-  $("#listar").click(function(){
+  $("#listara").click(function(){
     $.each({ name: "John", lang: "JS" }, function( k, v ) {
       alert( "Key: " + k + ", Value: " + v );
     });})})
+
+    //listar os produtos
   $(document).ready(function () {
-    $("#listara").click(function () {
+    $("#listar").click(function () {
       var listar = "http://localhost:3000/usuarios/listar";
-      var elementoPai = $(".pai").clone();
-      $(".pai").remove();
+      //var elementoPai = $(".pai").clone();
+      //$(".pai").remove();
       $.ajax({
         url: listar,
         type: "GET",
         dataType: "json",
         success: function (data) {
-          $.each(data
-            , function(index, item){
-
-            alert(index+" : "+item)
-          // elementoPai.find(".titulosPostagens").html(item.Usuarios.matricula);
-          // elementoPai.find(".p").html(item.Usuarios.nome);
-          // elementoPai.find(".v").html(item.Usuarios.email);
-          // elementoPai.find(".dataTermino").html(item.Usuarios.id_curso);
-          // elementoPai.find(".le").html(item.Usuarios.ativo);
-          // $('.conteudo').append(elementoPai.clone());
+          $.each(data , function(key, value){
+           $('.resultado').append(value.quantidade);
           })
           console.log(data);
         },
