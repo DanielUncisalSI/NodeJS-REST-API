@@ -1,9 +1,10 @@
 {
     "env" :{
-        "MYSQL_USER"     : "ubtlogistica8",
-        "MYSQL_PASSWORD" : "Nma55171", 
-        "MYSQL_DATABASE" : "ubtlogistica8",
-        "MYSQL_HOST"     : "mysql.db5.net2.com.br",
+        "MYSQL_USER"     : "root",
+        "MYSQL_PASSWORD" : "root", 
+        "MYSQL_DATABASE" : "ecomerce",
+        "MYSQL_HOST"     : "localhost",
+        "MYSQL_PORT"     : "3306",
 
         "JWT_KEY" : "segredo"
     }

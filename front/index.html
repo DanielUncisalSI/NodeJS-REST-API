@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
+    integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
+    crossorigin = "anônimo" > </script>  
+      <script src="script.js"></script>    
+    <title>Teste de API</title>
+</head>
+<body>
+    <div>   
+        Deletar usuario por matricula<br>
+        <input type="text" id="matriculaD" placeholder="matricula"><br>
+         <input type="button" id="excluir" value="Excluir usuario"><br>
+     </div> <br>
+    <div> 
+
+    <div>   
+        Acessar o sistema    <br>
+        <input type="text" id="matriculaA" placeholder="matricula"><br>
+       <input type="password" id="senhaA" placeholder="senha"><br>
+       <input type="text" disabled id="token" placeholder="token"><br>
+         <input type="button" id="acessar" value="Fazer Login"><br>
+     </div> <br>
+    <div>   
+
+       Cadastrar Usuário   <br>
+       <input type="text" id="matriculaC" placeholder="matricula"><br>
+      <input type="text" id="nomeC" placeholder="nome"><br>
+      <input type="text" id="emailC" placeholder="email"><br>
+      <input type="password" id="senhaC" placeholder="senha"><br>
+      <input type="text" id="id_cursoC" placeholder="id_curso"><br>
+      <input type="text" id="ativoC" placeholder="ativo"><br>
+        <input type="button" id="cadastrar" value="Cadastra Usuario"><br>
+    </div> <br>
+    
+        <div>   
+          Localizar por matricula   <br>
+          <input type="text" id="mat" placeholder="informe a matricula"><br>
+         <input type="text" id="matriculaL"><br>
+        <input type="text" id="nomeL"><br>
+        <input type="text" id="emailL"><br>
+        <input type="text" id="id_cursoL"><br>
+        <input type="text" id="ativoL"><br>
+          <input type="button" id="localizar" value="Localiza Usuario"><br>
+        </div> <br>
+
+        <div>   
+            Editar por matricula   <br>
+            <input type="text" id="matE" placeholder="inf mat para editar"><br>
+          <input type="text" id="nomeE" placeholder="nome"><br>
+          <input type="text" id="emailE" placeholder="email"><br>
+          <input type="text" id="id_cursoE" placeholder="id_curso"><br>
+          <input type="text" id="ativoE" placeholder="ativo"><br>
+            <input type="button" id="atualizar" value="Atualizar Usuario"><br>
+          </div> <br>
+
+          <div>   
+            Listar usuarios   <br>
+            <div class="conteudo">
+              <div class="pai">
+                <p class="titulosPostagens"></p>
+                <p class="p"></p>
+                <p class="v"></p>
+                <p class="dataInicio"></p>
+                <p class="dataTermino"></p>
+                <p class="le"></p>
+              </div>
+            </div>
+            
+            <input type="button" id="listar" value="Listar Usuario"><br>
+          </div>
+          
+      
+</body>
+
+</html>
