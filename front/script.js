@@ -144,27 +144,29 @@ $(document).ready(function(){
     });})})
 
     //listar os produtos
-  $(document).ready(function () {
-    $("#listar").click(function () {
-      var listar = "http://localhost:3000/usuarios/listar";
-      //var elementoPai = $(".pai").clone();
-      //$(".pai").remove();
-      $.ajax({
-        url: listar,
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-          $.each(data , function(key, value){
-           $('.resultado').append(value.quantidade);
-          })
-          console.log(data);
-        },
-        error: function (erro) {
-          console.log(erro)
-        }
-      });
+    $(document).ready(function () {
+      $("#listar").click(function () {
+        var listar = "http://localhost:3000/usuarios/listar";
+        var conteudo = $('.conteudo');
+        $(".pai").remove();
+        $.ajax({
+          url: listar,
+          type: "GET",
+          dataType: "json",
+          
+          success: function (data) {
+            $.each(data, function(index, item){
+             for(var i = 0; i<item.length; i++){   
+              conteudo.append(item[i].matricula + " - " +item[i].nome + " - "+item[i].email+" - "+ item[i].ativo + '<br>')
+             }
+              })
+          },
+          error: function (erro) {
+            console.log(erro)
+          }
+        });
+      })
     })
-  })
   
  
   
