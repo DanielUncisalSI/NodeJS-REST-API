@@ -136,15 +136,10 @@ $(document).ready(function () {
   })
   
   
-  //teste lista os produtos
-$(document).ready(function(){
-  $("#listara").click(function(){
-    $.each({ name: "John", lang: "JS" }, function( k, v ) {
-      alert( "Key: " + k + ", Value: " + v );
-    });})})
+
 
     //listar os produtos
-    $(document).ready(function () {
+    /*$(document).ready(function () {
       $("#listar").click(function () {
         var listar = "http://localhost:3000/usuarios/listar";
         var conteudo = $('.conteudo');
@@ -166,11 +161,12 @@ $(document).ready(function(){
           }
         });
       })
-    })
+    })*/
    
     function criarTabela(){
-      var table = document.getElementById('tabela');
+      var corpoTabela = $('#corpo');
       var listar = "http://localhost:3000/usuarios/listar";
+      //$("#corpo").remove();
       $.ajax({
         url : listar,
         type : "GET",
@@ -180,8 +176,8 @@ $(document).ready(function(){
           $.each(data, function(index, item){
             for(var i=0; i<item.length; i++){
               var row = document.createElement('tr');
-              row.innerHTML = "tabela" + item[i].matricula + " - " +item[i].nome + " - "+item[i].email+" - "+ item[i].ativo;
-              table.append(row);
+              row.innerHTML = '<td>' +item[i].matricula +'</td>' +  '<td>' +item[i].nome + '</td>' + '<td>' +item[i].email;
+              corpoTabela.append(row);
             }
           })
         })
