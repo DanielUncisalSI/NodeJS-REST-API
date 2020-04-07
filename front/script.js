@@ -167,8 +167,26 @@ $(document).ready(function(){
         });
       })
     })
-  
- 
+   
+    function criarTabela(){
+      var table = document.getElementById('tabela');
+      var listar = "http://localhost:3000/usuarios/listar";
+      $.ajax({
+        url : listar,
+        type : "GET",
+        dataType : "json",
+
+        success:(function(data){
+          $.each(data, function(index, item){
+            for(var i=0; i<item.length; i++){
+              var row = document.createElement('tr');
+              row.innerHTML = "tabela" + item[i].matricula + " - " +item[i].nome + " - "+item[i].email+" - "+ item[i].ativo;
+              table.append(row);
+            }
+          })
+        })
+        })
+      }
   
   
   
