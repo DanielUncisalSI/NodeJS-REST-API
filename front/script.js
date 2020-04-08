@@ -174,7 +174,7 @@ $(document).ready(function () {
           $.each(data, function(index, item){
             for(var i=0; i<item.length; i++){
               var row = document.createElement('tr');
-              row.innerHTML = '<td>' +item[i].matricula +'</td>' +  '<td>' +item[i].nome + '</td>' + '<td>' +item[i].email + '<td>'+ item[i].ativo+'</td>';
+              row.innerHTML = '<td>'+item[i].matricula+'</td>' +  '<td>'+item[i].nome+'</td>' + '<td>'+item[i].email+'</td>'+ '<td>'+item[i].ativo+'</td>';
               corpoTabela.append(row);
             }
           })
