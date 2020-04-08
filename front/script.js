@@ -15,7 +15,6 @@ $(document).ready(function () {
         error: function (erro) {
           console.log(erro)
           alert(erro)
-  
         }
       })
     })
@@ -171,18 +170,17 @@ $(document).ready(function () {
         url : listar,
         type : "GET",
         dataType : "json",
-
         success:(function(data){
           $.each(data, function(index, item){
             for(var i=0; i<item.length; i++){
               var row = document.createElement('tr');
-              row.innerHTML = '<td>' +item[i].matricula +'</td>' +  '<td>' +item[i].nome + '</td>' + '<td>' +item[i].email;
+              row.innerHTML = '<td>' +item[i].matricula +'</td>' +  '<td>' +item[i].nome + '</td>' + '<td>' +item[i].email + '<td>'+ item[i].ativo+'</td>';
               corpoTabela.append(row);
             }
           })
         })
         })
       }
-  
+
   
   

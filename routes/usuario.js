@@ -7,7 +7,7 @@ const login = require('..//middleware/login')
 
 
 //excluir um usuario
-router.post('/excluir',login.obrigatorio,(req, res, next)=>{
+router.post('/excluir',(req, res, next)=>{
     mysql.getConnection((error, conn)=> {
         if(error){ return res.status(500).send({error : error})}
         conn.query(
@@ -26,7 +26,7 @@ router.post('/excluir',login.obrigatorio,(req, res, next)=>{
 })
 
 // Edita um usuario
-router.post('/atualizar',login.obrigatorio,function(req, res){  
+router.post('/atualizar',function(req, res){  
     mysql.getConnection((error, conn) =>{
         if(error){return res.status(500).send({error : error})}
         conn.query(
@@ -123,7 +123,7 @@ router.get('/listar',function(req, res){
 
 
 //cadastrar usuario
-router.post('/cadastrar',login.obrigatorio ,function(req, res){
+router.post('/cadastrar',function(req, res){
     mysql.getConnection(function(error, conn){
         if(error){ return res.status(500).send({erro : error})}
         conn.query('SELECT * FROM USUARIO WHERE matricula = ?',
@@ -148,7 +148,7 @@ router.post('/cadastrar',login.obrigatorio ,function(req, res){
                                 email: req.body.email,
                                 senha: req.body.senha,
                                 id_curos: req.body.id_curso,
-                                atvo: req.body.ativo
+                                ativo: req.body.ativo
                             }
                         }
                         return res.status(201).send({response})
@@ -163,7 +163,7 @@ router.post('/cadastrar',login.obrigatorio ,function(req, res){
   router.post('/login', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if(error) { return res.status(500).send({ error: error})}
-        const query = `SELECT * FROM USUARIO WHERE matricula = ?`;
+        const query = `SELECT * FROM USUARIO WHERE matricula = ? `;
         conn.query(query,[req.body.matricula],(error, results, fields) => {
             conn.release();
             if(error) { return res.status(500).send({ error: error})}

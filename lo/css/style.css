@@ -1,0 +1,103 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background-image: linear-gradient( -45deg, #38d39f, white);
+
+   }
+
+   .box h1{
+    color:black;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 30px
+    
+   }
+
+   .box{
+    width: 350px;
+    padding: 40px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    text-align: center;
+    border-radius: 23px;
+
+   }
+
+
+img{
+    width: 160px;
+    padding: 40px;
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+
+}
+
+a{
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color:black;
+	font-size: 12px;
+    transition: .3s;
+
+
+}
+
+.box input[type="text"],.box input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: -5px auto;
+    text-align: center;
+    color:black;
+    border: 2px solid black;
+    padding: 14px 75px;
+    width: 150px;
+    outline: none;
+    border-radius: 30px;
+    transition: 0.30s;
+    font-size: 14px
+    
+}
+
+.box input[type="submit"]{
+	width: 300px;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: 2px solid black;
+	background-color: #32be8f;
+	font-size: 1.2rem;
+	color:black;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+    transition: .5s;
+    margin: 6px auto;
+    padding: 14px 75px;
+    
+}
+
+
+i{
+	position: relative;
+    display: grid;
+    width: auto;
+    top: 30px;
+    left: -35%;
+
+}
+
+
+
+
+
+
+
