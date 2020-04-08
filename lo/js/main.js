@@ -7,7 +7,7 @@ $(document).ready(function () {
         type: "POST",
         url: login,
         dataType: "json",
-        data: { "matricula": matricula,"senha": senha},
+        data: { "matricula": matricula, "senha": senha},
         success: function (data) {
           console.log(data);
           $("#token").val(data.token)
