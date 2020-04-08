@@ -3,9 +3,11 @@ const router = express.Router()
 const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const login = require('..//middleware/login')
+
 
 //excluir um usuario
-router.post('/excluir',(req, res, next)=>{
+router.post('/excluir',login.obrigatorio,(req, res, next)=>{
     mysql.getConnection((error, conn)=> {
         if(error){ return res.status(500).send({error : error})}
         conn.query(
@@ -24,7 +26,7 @@ router.post('/excluir',(req, res, next)=>{
 })
 
 // Edita um usuario
-router.post('/atualizar',function(req, res){  
+router.post('/atualizar',login.obrigatorio,function(req, res){  
     mysql.getConnection((error, conn) =>{
         if(error){return res.status(500).send({error : error})}
         conn.query(
@@ -121,7 +123,7 @@ router.get('/listar',function(req, res){
 
 
 //cadastrar usuario
-router.post('/cadastrar',function(req, res){
+router.post('/cadastrar',login.obrigatorio ,function(req, res){
     mysql.getConnection(function(error, conn){
         if(error){ return res.status(500).send({erro : error})}
         conn.query('SELECT * FROM USUARIO WHERE matricula = ?',
