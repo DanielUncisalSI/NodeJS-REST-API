@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     $("#acessar").click(function () {
       var matricula = $("#matricula").val();
@@ -11,14 +13,16 @@ $(document).ready(function () {
         data: { "matricula": matricula, "senha": senha},
         success: function (data) {
           console.log(data);
-          $("#token").val(data.token)
-          window.location.replace("lo/autorizado.html");
+             // $("#token").val(data.token)
           alert("Acesso Permitido")
+          //window.location.replace("cadastro.html");
+          location.assign("cadastro.html")
+          //window.location.href="cadastro.html";
         },
         error: function (erro) {
           console.log(erro)
-          window.location.replace = "lo/naoAutorizado.html";
-          alert(erro)
+          window.location.replace = "C:\NodeJS-REST-API\login_cadastro\index.html";
+          alert("Erro ao tentar se conectar")
   
         }
       })

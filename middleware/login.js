@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+ const jwt = require('jsonwebtoken');
 
 exports.obrigatorio =(req, res, next)=>{
     try {
@@ -21,3 +21,4 @@ exports.opcional =(req, res, next)=>{
         next()
     }
 }
+

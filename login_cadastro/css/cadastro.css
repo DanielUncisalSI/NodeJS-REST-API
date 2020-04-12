@@ -1,0 +1,64 @@
+img{
+    position: absolute;
+    left: 5px;
+    width: 80px;
+    top: 2px;
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.header{
+  padding: 25px;
+  background: rgb(33, 233, 156);
+  color: white;
+  font-size: 20px;
+  padding-left: 150px;
+}
+
+.verde{
+  background-color: green;
+}
+
+.vermelho{
+  background-color: red;
+}
+
+.formulario{
+  font-size: 20px;
+}
+
+.botao{
+  padding-left: 300px;
+  cursor: pointer;
+}
+
+.field{
+  padding-left: 50px;
+}
+
+.sdhd{
+  padding-left: 80px;
+}
+
+.caixa{
+  margin-left:  60px;
+  cursor: pointer;
+}
+
+.ma{
+  margin-left: 30px;
+  width: 420px;
+}
+
+.curso{
+  margin-left: 60px;
+  cursor: pointer;
+}
+
+.botao{
+  cursor: pointer;
+}

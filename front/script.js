@@ -29,8 +29,7 @@ $(document).ready(function () {
       var email =   $("#emailE").val();
       var id_curso =   $("#id_cursoE").val();
       var ativo =   $("#ativoE").val();
-      var atualizar = "http://localhost:3000/usuarios/atualizar";
-                   
+      var atualizar = "http://localhost:3000/usuarios/atualizar";             
       $.ajax({
         type: "POST",
         url: atualizar,
@@ -42,12 +41,11 @@ $(document).ready(function () {
             "id_curso": id_curso,
             "ativo": ativo},
         success: function (data) {
-          console.log(data);
-          alert("Usuario atualizado com sucesso")
+        console.log(data);
+        alert("Usuario atualizado com sucesso")
         },
         error: function (erro) {
-          console.log(erro)
-  
+        console.log(erro)
         }
       })
     })
@@ -73,7 +71,6 @@ $(document).ready(function () {
         error: function (erro) {
           console.log(erro)
           alert(erro)
-  
         }
       })
     })
