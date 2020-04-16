@@ -2,6 +2,7 @@ const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const login = require('../middleware/login')
+
 exports.excluirUsuarios = function(req, res, next){
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }

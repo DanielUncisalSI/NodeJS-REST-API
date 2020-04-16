@@ -3,8 +3,9 @@ $(document).ready(function () {
     $("#excluir").click(function () {
       var matricula = $("#matriculaD").val();
       var excluir = "http://localhost:3000/usuarios/excluir";
+                
       $.ajax({
-        type: "post",
+        type: "DELETE",
         url: excluir,
         dataType: "json",
         data: { "matricula": matricula},
