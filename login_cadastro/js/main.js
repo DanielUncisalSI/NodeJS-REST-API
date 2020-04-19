@@ -1,30 +1,25 @@
 
 
-$(document).ready(function () {
-    $("#acessar").click(function () {
-      var matricula = $("#matricula").val();
-      var senha =   $("#senha").val();
-      
-      var login = "http://localhost:3000/usuarios/login";
-      $.ajax({
-        type: "POST",
-        url: login,
-        dataType: "json",
-        data: { "matricula": matricula, "senha": senha},
-        success: function (data) {
-          console.log(data);
-             // $("#token").val(data.token)
-          alert("Acesso Permitido")
-          //window.location.replace("cadastro.html");
-          location.assign("cadastro.html")
-          //window.location.href="cadastro.html";
-        },
-        error: function (erro) {
-          console.log(erro)
-          window.location.replace = "C:\NodeJS-REST-API\login_cadastro\index.html";
-          alert("Erro ao tentar se conectar")
-  
-        }
-      })
-    })
-  })
+function verificaToken(){
+  if (localStorage.getItem("token")){
+    console.log("Acesso permitido")
+    }else{
+    alert("Voce precisa está logado");
+  window.location.replace("C:/NodeJS-REST-API/login_cadastro/index.html");
+  }
+}
+
+  function removeToken(){
+    localStorage.removeItem("token");
+    alert("Saindo do sistema...!")
+    window.location.replace("C:/NodeJS-REST-API/login_cadastro/index.html");
+  }
+
+$(".drop")
+  .mouseover(function() {
+  $(".dropdown").show(300);
+});
+$(".drop")
+  .mouseleave(function() {
+  $(".dropdown").hide(300);     
+});

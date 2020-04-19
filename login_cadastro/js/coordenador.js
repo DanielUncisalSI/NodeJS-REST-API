@@ -20,10 +20,10 @@ $(document).ready(function () {
       })
     })
   })
-
-
-//Editar Usuario
-$(document).ready(function () {
+  
+  
+  //Editar Usuario
+  $(document).ready(function () {
     $("#atualizar").click(function () {
       var matricula = $("#matE").val();
       var nome =   $("#nomeE").val();
@@ -50,12 +50,12 @@ $(document).ready(function () {
     })
   })
   
-
-//Fazer Login
-$(document).ready(function () {
+  
+  //Fazer Login
+  $(document).ready(function () {
     $("#acessar").click(function () {
-      var email = $("#emailA").val();
-      var senha =   $("#senhaA").val();
+      var email = $("#email").val();
+      var senha =   $("#senha").val();
       var login = "http://localhost:3000/coordenador/login";
       $.ajax({
         type: "POST",
@@ -64,20 +64,23 @@ $(document).ready(function () {
         data: { "email": email,"senha": senha},
         success: function (data) {
           console.log(data);
-          $("#token").val(data.token)
-          alert("Acesso Permitido")
+          //$("#token").val(data.token)
+          alert("Acesso Permitido");
+          localStorage.setItem("token", data.token);
+          window.location.replace("C:/NodeJS-REST-API/login_cadastro/cadastro.html");
         },
         error: function (erro) {
           console.log(erro)
-          alert(erro)
+          alert("Erro ao tentar acessar")
+          window.location.replace("C:/NodeJS-REST-API/login_cadastro/index.html");
         }
       })
     })
   })
   
-
-//localizar
- $(document).ready(function(){
+  
+  //localizar
+  $(document).ready(function(){
     $("#localizar").click(function(){
       var mat= $("#mat").val();
       var urlLocalizar = "http://localhost:3000/coordenador/localizar/"+ mat;
@@ -98,16 +101,16 @@ $(document).ready(function () {
       })
     })
   })
-
-//Cadastrar
-$(document).ready(function () {
+  
+  //Cadastrar
+  $(document).ready(function () {
     $("#cadastrar").click(function () {
-      var nome =   $("#nomeC").val();
-      var email =   $("#emailC").val();
-      var senha =   $("#senhaC").val();
-      var matricula = $("#matriculaC").val();
-      var curso =   $("#cursoC").val();
-      nome, email, senha, matricula, curso
+      var nome =   $("#nome_cad").val();
+      var email =   $("#email_cad").val();
+      var senha =   $("#senha_cad").val();
+      var matricula = $("#mat_cad").val();
+      var curso =   $("#slct").val();
+      
       var cadastrar = "http://localhost:3000/coordenador/cadastrar";
       $.ajax({
         type: "POST",
@@ -117,11 +120,10 @@ $(document).ready(function () {
           "nome": nome, "email": email, "senha": senha, 
           "matricula": matricula, "curso":curso},
         success: function (data) {
-          console.log(data);
           alert("Coordenador criado com sucesso")
         },
         error: function (erro) {
-          console.log(erro)
+            alert("Erro ao realizar o cadastro ")
   
         }
       })
@@ -129,8 +131,8 @@ $(document).ready(function () {
   })
   
   
-
-
+  
+  
     //listar os produtos
     /*$(document).ready(function () {
       $("#listar").click(function () {
@@ -175,6 +177,8 @@ $(document).ready(function () {
         })
         })
       }
-
+  
+  
+  
   
   

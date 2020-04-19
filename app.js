@@ -3,9 +3,8 @@ const app = express();
 //const morgan = require('morgan') //criar logs
 const bodyParser = require('body-parser')
 
-const rotaProdutos = require('./routes/produtos')
-const rotaPedidos = require('./routes/pedidos') 
-const rotaUsuarios = require('./routes/usuario')
+
+const rotaCoordenador = require('./routes/coordenador')
 var cors = require('cors');
 
 // use it before all route definitions
@@ -29,9 +28,8 @@ app.use((req, res, next)=>{
     next()
 })
 //app.use(morgan('dev'))
-app.use('/produtos',rotaProdutos)
-app.use('/pedidos',rotaPedidos)
-app.use('/usuarios',rotaUsuarios)
+
+app.use('/coordenador',rotaCoordenador)
 
 
 //quando não encontra rota

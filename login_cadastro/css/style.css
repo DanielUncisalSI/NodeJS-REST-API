@@ -1,7 +1,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-    background-color:white;
+    background-color:green;
    }
 
    .box h1{
@@ -14,23 +14,21 @@ body{
 
    .salvar{
         font-size: 15px;
-        padding-right: 75px;
-        
-        
+        padding-right: 10px;        
    }
 
    .box{
-    width: 400px;
-    height: 280px;
-    padding: 40px;
+    width: 380px;
+    height: 220px;
+    padding: 100px;
     position: absolute;
-    top: 65%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background: rgb(226, 211, 211);
+    background: white;
     text-align: center;
     border-style: solid;
-    border-color: #32be8f;
+    border-color: black;
    }
 
 
@@ -44,36 +42,16 @@ body{
     text-align: center;
    }
 
-   
-
-   h2{
-    font-size: 20px;
-    position: absolute;
-    top: 21%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-   }
-
-   h3{
-    font-size: 30px;
-    position: absolute;
-    top: 1%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-   }
-
    h4{
     font-size: 15px;
    }
 
 
 img{
-    width: 120px;
+    width: 110px;
     padding: 40px;
     position: absolute;
-    top: 12%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
@@ -103,10 +81,10 @@ a{
     
 }
 
-.box input[type="submit"]{
+.box input[type="button"]{
 	outline: none;
 	border: 2px solid black;
-	background-color: #32be8f;
+	background-color: black;
 	font-size: 1.2rem;
 	color:white;
 	font-family: 'Poppins', sans-serif;
@@ -115,10 +93,10 @@ a{
 	cursor: pointer;
     transition: .5s;
     margin: 6px auto;
-    padding: 5px 145px;
+    padding: 5px 135px;
     text-align: center;
+    border-radius: 10px;
 }
-
 
 i{
 	position: relative;
@@ -128,10 +106,3 @@ i{
     left: -40%;
 
 }
-
-
-
-
-
-
-

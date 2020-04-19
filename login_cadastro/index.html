@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
     <meta name="viewport"  charset="utf-8" content="width=device-width, initial-scale=1.0">
     <title>Uncisal</title>
-    
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    
-    <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
-    integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
-    crossorigin = "anônimo" > </script> 
-    <script type="text/javascript" src="js/main.js"></script> 
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-    <img src="img/uncii.png" style="max-width:100%;height:auto;">
-    <h2>UNCISAL</h2>
-    <h1>Sistema de distribuição de horário docente</h1>
     <form class="box"  method="POST">
-    <h3>Bem vindo!</h3>
-    <h4>Por favor, digite o seu e-mail e senha.</h4>
+    <img src="img/uncii.png" style="max-width:100%;height:auto;">
+    <h4>SDHD - Sistema de Distribuição de Horário Docente</h4>
+    
     <i class="fas fa-user"></i>
-    <input type="text" name="matricula"  id="matricula" placeholder="matricula:">
+    <input type="text" id="email" name="" placeholder="E-mail:">
     <i class="fas fa-lock"></i>
-    <input type="password" name="senha" id="senha" placeholder="Senha:">
+    <input type="password" id="senha" name="" placeholder="Senha:">
     <br>
     <div class=" salvar">
-    <span class="salvar"><input type="checkbox" name="1" value="1"> Deseja salvar informações ?
+    <span class="salvar"><input type="checkbox" name="1" value="1"> Deseja salvar as informações ?
     </span>
     </div>
-    <br>
     
     <br>
+    <input type="button" id="acessar" value="Entrar">
+    <input  type="button" id="aces" value="Não funciona">
     <br>
-   
-    <input type="button" name="acessar" id="acessar" value="Login">
+    <br>
      <a href="#">Esqueceu sua senha ?</a> 
-    <a href="#">Cadastre-se</a>
-    
-    
  </form>
  
+ <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
+ integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
+ crossorigin = "anônimo" > </script> 
+    <script type="text/javascript" src="js/coordenador.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
-
 </html>

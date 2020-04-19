@@ -1,106 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta name="viewport"  charset="utf-8" content="width=device-width, initial-scale=1.0">
-    <title>Uncisal</title>
-    <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/cadastro.css"> 
+    <title>Cadastro</title>
 </head>
-<body>
-   
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="box">
-            <div class="img">
-                <img src="img/uncii.png" style="max-width:100%;height:auto;">
-            </div>
-        </div>
-
-    </div>
-        <div class="main_content">
-            <div class="header">
-                <h3>Sistema de Distribuição de Horário Docente</h3>
-            </div>  
-        </div>
-    </div>
+<body onload="verificaToken()">
     
-<h4> <br> <div class="main_content"> 
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Cadastro do coordenador 
-    </div>   </h4>
-  <h5> <div class="main_content"> 
-    &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; Preencha os campos abaixo 
-    </h5>
-    <br>
-    <br>
-</div>
-</div>
-</div>
-</tr> 
-<br> 
-</table>
 
-</style>
-</head>
-<body>
+<nav class="nav">
+	<ul>
+        <li><img src="img/uncii.png" class="img"  style="max-width:100%;height:auto;">
+        <li > <h4 class="h4"> <p>UNCISAL</p>
+        Sistema de Distribuição de Horário Docente
+        </h4>
+		    <li><a href="#">HOME</a>
+        <li><a href="#">COORDENADOR</a>
+		    <li><a href="#">DOCENTES</a>
+        <li><a href="#">HORARIOS</a>
+        <li><a href="#">DISCIPLINA</a>
+        <li onclick="removeToken()"><a href="#">SAIR</a>
+        <li><a class="preto" href="#">ADM</a>
+	</ul>
+</nav>
 
-<div>
-<form class="formulario" method="post"> 
+    <div class="container" >
+        <a class="links" id="paracadastro"></a>
+        <div class="content">      
+          <!--FORMULÁRIO DE LOGIN-->
+          <div id="login">
+            <form method="post" action=""> 
+    
+          <div id="cadastro">
+            <form method="post" action="" onload="teste()"> 
+              <h4 class="cadastro">Cadastro Coordenador</h4> 
+              <br>
+              
+              <p> 
+                <label for="nome_cad"></label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Nome" />
+              </p>
+              
+              <p> 
+                <label for="email_cad"></label>
+                <input id="email_cad" name="email_cad" required="required" type="email" placeholder="E-mail"/> 
+              </p>
+              
+              <p> 
+                <label for="senha_cad"></label>
+                <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="Senha"/>
+              </p>
+              
+              <p> 
+                <label for="mat_cad"></label>
+                <input id="mat_cad" name="mat_cad" required="required" type="text" placeholder="Matricula"/>
+              </p>
 
-<div class="field">
- <label for="nome">Nome: 
- <input class="caixa" type="text" id="nome" name="nome" size="55" placeholder= "Digite Seu nome" required>
-</div>
-<br>
-<div class="field">
-<label for="numero da matricula">Matrícula: </label>
-<input class="ma" type="text" id="numero da matricula" name="numero da matricula" size="52" placeholder= "12345" required>
-</div>
-<br>
-<div class="field">
-    <label for="curso">Curso: </label>
-        <select  class="curso" style="width: 422px;">
-            <option value="#"></option>
-            <option value="Sistema para Internet">Sistemas para Internet</option>
-            <option value="Radiologia">Radiologia</option>
-            <option value="Enfermagem">Enfermagem</option>
-            <option value="Fisioterapia">Fisioterapia</option>
-            <option value="Fonoaudiologia">Fonoaudiologia</option>
-            <option value="Medicina">Medicina</option>
-            <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-            <option value="Alimentos">Alimentos</option>
-            <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-            <option value="Processos Gerenciais">Processos Gerenciais</option>
-            <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-            <option value="Sistemas Biomédicos">Sistemas Biomédicos</option>
-            <option value="ADS">ADS</option>
-        </select>
-</div>  
-<br>      
-<div class="field">
-<label for="email">E-mail: </label>
-<input class="caixa" type="email" id="email" name="email" size="55" placeholder="exemplo@gmail.com" required>
-</div>   
-<br>
-<div>
-<form>
-<div class="field">
-<label for="Senha">Senha: </label>
-<input class="caixa" type="password" name="senha"  placeholder="Digite sua Senha" size="55" required>
-</form>
-<br>
-<form> 
-   <div class=" sdhd">
-<br>
-<input class="caixa" type="checkbox" name="opcão" value="op1"> Concordo com os termos de uso de SDHD
-   </div>
-</form>
-</div>
-<br>
-<div class="botao">
+              <p> 
+                <div class="select">
+                  <select name="slct" id="slct">
+                  <option selected disabled>Curso</option>
+                  <option value="Sistemas para Internet">Sistemas para Internet</option>
+                  <option value="Enfermagem">Enfermagem</option>
+                  <option value="Fisioterapia">Fisioterapia</option>
+                  <option value="Fonoaudiologia">Fonoaudiologia</option>
+                  <option value="Medicina">Medicina</option>
+                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+                  <option value="Alimentos">Alimentos</option>
+                  <option value="ADS">ADS</option>
+                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
+                  <option value="Processos Gerenciais">Processos Gerenciais</option>
+                  <option value="Radiologia">Radiologia</option>
+                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
+                   <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
+                </select>
+                </div>
+              </p>
 
-    <button  class="verde"  name="acao" type="submit">Cadastrar</button>
-    <button  class="vermelho"  name="acao" type="submit" >Cancelar</button >    
-</div>
-</form>
-</div>
+              <p> 
+                <input type="button" id="cadastrar" value="Cadastrar"/> 
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ </form>
+ <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
+    integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
+    crossorigin = "anônimo" > </script> 
+ <script type="text/javascript" src="js/main.js"></script>
+ <script type="text/javascript" src="js/coordenador.js"></script>
+
+ 
+</body>
 </html>
