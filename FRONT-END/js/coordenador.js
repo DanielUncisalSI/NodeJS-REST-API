@@ -125,6 +125,7 @@ $(document).ready(function () {
         },
         error: function (erro) {
             alert("Erro ao realizar o cadastro ")
+            window.location.replace("C:/NodeJS-REST-API/FRONT-END/index.html");
   
         }
       })

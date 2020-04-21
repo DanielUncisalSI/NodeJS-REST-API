@@ -91,12 +91,7 @@ exports.listaCoordenador = function (req, res) {
                             nome: coor.nome,
                             email: coor.email,
                             curso: coor.curso,
-                            request: {
-                                tipo: 'GET',
-                                descricao: 'Retorna os detalhes de um coordenador especifico',
-                                url: 'http://localhost:3000/coordenador/localiza/' + coor.matricula
-
-                            }
+                           
                         }
                     })
                 }
@@ -166,7 +161,8 @@ exports.loginCoordenador = function(req, res, next) {
                         });
                     return res.status(200).send({
                         mensagem: 'Autenticado com sucesso',                       
-                        token: token
+                        token: token,
+                        nome: results[0].nome,
                     });
                 }
                 return res.status(401).send({ mensagem: 'Falha na autenticação!' })
