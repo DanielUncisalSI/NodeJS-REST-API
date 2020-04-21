@@ -1,4 +1,6 @@
- const jwt = require('jsonwebtoken');
+//A FUNÇÃO ABAIXO NÃO ESTÁ EM USO NO PROJETO
+
+const jwt = require('jsonwebtoken');
 
 exports.obrigatorio =(req, res, next)=>{
     try {

@@ -16,16 +16,16 @@ app.use(bodyParser.urlencoded(
 app.use(bodyParser.json()) //so aceita json de entrada no body
 
 app.use((req, res, next)=>{
-    res.header('Access-Control-Allow-Origin','*')
-                res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization'
-    )
+    res.header('Acces-Control-Allow-Origin','*')
+    res.header(
+    'Acces-Control-Allow-Header',
+'Origin, X-Requrested-With, Content-Type, Accept, Authorization'
+    );
     if(req.method === 'OPTIONS'){
-        req.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET')
+        res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
         return res.status(200).send({})
     }
-    next()
+    next();
 })
 //app.use(morgan('dev'))
 

@@ -1,7 +1,6 @@
 const mysql = require('../mysql').pool
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const login = require('../middleware/login')
 
 exports.excluirCoordenador = function(req, res, next){
     mysql.getConnection((error, conn) => {
