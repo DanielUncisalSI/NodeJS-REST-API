@@ -4,36 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/cadastrodocentes.css">
+    <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
+    integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
+    crossorigin = "anônimo" > </script> 
     <script type="text/javascript" src="js/main.js"></script>
-
+     
 
     <title>Cadastro Docentes</title>
 </head>
-<body onload="verificaToken()>
+<body onload="verificaToken()">
 <nav class="nav">
 	<ul class="menu">
         <li><img src="img/uncii.png" class="img"  style="max-width:100%;height:auto;">
         <li > <h4 class="h4"> <p>UNCISAL</p>
         Sistema de Distribuição de Horário Docente
         </h4>
-		    <li><a href="#">HOME</a>
+		    <li><a href="home.html">HOME</a>
             <li class="submenu"><a href="#">COORDENADOR</a>
                 <ul>
-                    <li class="submenu"><a href="#">Cadastro Coordenador</a></li>
-                    <li class="submenu"><a href="#">Editar Coordenador</a></li>
+                    <li><a href="cadastrocoordenador.html">Cadastro Coordenador</a></li>
+                    <li><a href="editarCoordenador.html">Editar Coordenador</a></li>
                    </ul>
-		    <li><a href="#">DOCENTES</a>
+            <li class=""><a href="#">DOCENTES</a>
+                <ul class="submenu2">
+                    <li><a href="cadastrodocentes.html">Cadastro Docentes</a></li>
+                    <li><a href="editarDocentes.html">Editar Docentes</a></li>
+                </ul>
             <li><a href="#">HORARIOS</a>
-            <li><a href="#">DISCIPLINA</a>
-            <li><a href="#">SAIR</a>
-            <li><a class="preto" href="#">ADM</a>
+            <li class=""><a href="#">DISCIPLINA</a>
+                <ul class="submenu3">
+                    <li><a href="cadastrodisciplinas.html">Cadastrar Disciplinas</a></li>
+                    <li><a href="editarDisciplina.html">Editar Disciplinas</a></li>
+                </ul>
+            <li id="sair"><a href="index.html">SAIR</a>
+            <li id="usuario"><a class="preto" href="#">ADM</a>
 	</ul>
 </nav>
 
     <div class="container" >
         <a class="links"></a>
         <div class="content">      
-          <!--FORMULÁRIO DE LOGIN-->
           <div id="login">
             <form method="post" action=""> 
     
@@ -44,17 +54,17 @@
               
               <p> 
                 <label for="nome_cad"></label>
-                <input id="nome@" name="nome" required="required" type="text" placeholder="Nome" />
+                <input id="nome" name="nome" required="required" type="text" placeholder="Nome" />
               </p>
                 
               <p> 
                 <label for="matricula-cad"></label>
-                <input id="mat-cad" name="matricula" required="required" type="text" placeholder="Matricula"/>
+                <input id="matricula" name="matricula" required="required" type="text" placeholder="Matricula"/>
               </p>
 
               <p> 
                 <div class="select">
-                  <select name="cursos" id="option">
+                  <select name="cursos" id="cursos">
                   <option selected disabled>Curso</option>
                   <option value="Sistemas para Internet">Sistemas para Internet</option>
                   <option value="Enfermagem">Enfermagem</option>
@@ -75,7 +85,7 @@
 
               <p> 
                 <div class="select">
-                  <select name="opçoes" id="primeiro">
+                  <select name="dias" id="dias">
                   <option selected disabled>1° Opcão dia</option>
                   <option value="Segunda-Feira">Segunda-Feira</option>
                   <option value="Terça-Feira">Terça-Feira</option>
@@ -89,7 +99,7 @@
 
               <p> 
                 <div class="select">
-                  <select name="horario" id="hora@">
+                  <select name="hora" id="hora">
                   <option selected disabled>1° Opção Horário</option>
                   <option value="18:00h às 19:59h">18:00h às 19:59h</option>
                   <option value="20:00h às 21:59h">20:00h às 21:59h</option>
@@ -99,7 +109,7 @@
 
               <p> 
                 <div class="select">
-                  <select name="opçoes2" id="segundo">
+                  <select name="dia" id="dia">
                   <option selected disabled>2° Opcão Dia</option>
                   <option value="Segunda-Feira">Segunda-Feira</option>
                   <option value="Terça-Feira">Terça-Feira</option>
@@ -113,7 +123,7 @@
 
               <p> 
                 <div class="select">
-                    <select name="horario2" id="hora2">
+                    <select name="horas" id="horas">
                         <option selected disabled>2° Opção Horário</option>
                         <option value="18:00h às 19:59h">18:00h às 19:59h</option>
                         <option value="20:00h às 21:59h">20:00h às 21:59h</option>

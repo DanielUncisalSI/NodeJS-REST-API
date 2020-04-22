@@ -1,28 +1,32 @@
+
+
 function verificaToken(){
   if (localStorage.getItem("token")){
     console.log("Acesso permitido")
     }else{
     alert("Voce precisa está logado");
-  window.location.replace("C:/NodeJS-REST-API/FRONT-END/index.html");
+    window.location.replace("index.html");
   }
 }
 
-  function removeToken(){
+//remove o localStorage 
+$(document).ready(function () {
+  $("#sair").click(function () {
     localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
     alert("Saindo do sistema...!")
-    window.location.replace("C:/NodeJS-REST-API/FRONT-END/index.html");
-  }
+  })
+  })
 
-$(".drop")
-  .mouseover(function() {
-  $(".dropdown").show(300);
-});
-$(".drop")
-  .mouseleave(function() {
-  $(".dropdown").hide(300);     
-});
+  //mostrar usuario logado:
+  $(document).ready(function(){
+   if(localStorage.getItem("usuario")){ 
+   document.getElementById("usuario").innerHTML = "Usuário: "+localStorage.getItem("usuario");
+   }
+  })
 
-$(".drop")
+
+  $(".drop")
   .mouseover(function() {
   $(".dropdown").show(300);
 });

@@ -53,7 +53,7 @@ $(document).ready(function () {
   
   //Fazer Login
   $(document).ready(function () {
-    $("#acessar").click(function () {
+    $("#entrar").click(function () {
       var email = $("#email").val();
       var senha =   $("#senha").val();
       var login = "http://localhost:3000/coordenador/login";
@@ -66,8 +66,10 @@ $(document).ready(function () {
           console.log(data);
           //$("#token").val(data.token)
           alert("Acesso Permitido");
+          $('.alert').fadeIn('2000');
           localStorage.setItem("token", data.token);
-          window.location.replace("C:/NodeJS-REST-API/FRONT-END/telaPrincipal.html");
+          localStorage.setItem("usuario", data.nome);
+          window.location.replace("home.html");
         },
         error: function (erro) {
           console.log(erro)

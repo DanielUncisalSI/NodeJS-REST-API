@@ -1,13 +1,8 @@
 .submenu li a{color:#333; padding:10px 10px;}
  
-.submenu li a:hover{
-background:#ddd; 
-color:black;
-}
-
 .menu li  ul{
     position:absolute; 
-    top:76px; 
+    top:72px; 
     background-color:#fff; 
     display:none;
     z-index: 1;
@@ -17,11 +12,42 @@ color:black;
 
 
     .menu li ul li{
-        border:1px solid #c0c0c0; 
         width:203px;
-        }
+		}
 
+		.submenu2 li a{color:#333; padding:10px 10px;}
 
+		.submenu2{
+			position: relative;
+			width: 168px;
+			}
+
+		.submenu2  a:hover,
+		.submenu2  a:focus {
+			background: rgba(0, 0, 0, .15);
+			height: 23px;
+			width: 147px;
+			}
+
+		.submenu3 li a{color:#333; padding:10px 10px;}
+
+		.submenu3{
+			position: relative;
+			width: 163px;
+			font-size:15px;
+			}
+
+		.submenu3  a:hover,
+		.submenu3  a:focus {
+			background: rgba(0, 0, 0, .15);
+			height: 23px;
+			width: 143px;
+			}
+
+			
+		
+			
+			
 .select {
 	position: relative;
 	display: flex;
@@ -85,7 +111,6 @@ nav {
 	margin: 0 auto;
 	max-width: 100%;
 	background: white;
-	box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
 nav::after {
@@ -95,7 +120,7 @@ nav::after {
 }
 
 nav ul {
-	padding: 0;
+	padding: 0px;
 	margin: 0;
 	list-style: none;
 }
@@ -111,11 +136,10 @@ nav ul li a {
 	text-decoration: none;
 	padding: 1rem 1rem;
 	border-top: 2px solid transparent;
-	border-bottom: 2px solid transparent;
-    transition: all .3s ease-in-out;
+	border-bottom: 1px solid transparent;
     color:black;
-    padding-top: 35px;
-    padding-left: 40px;
+    padding-top: 30px;
+    padding-left: 39px;
     position: center;
 }
 
@@ -133,10 +157,6 @@ nav ul li a:focus {
 }
 
 
-nav ul li a:focus {
-	color: white;
-}
-
 nav ul li a:not(:only-child)::after {
 	padding-left: 4px;
 	content: ' ▾';
@@ -146,19 +166,7 @@ nav ul li ul li {
 	min-width: 190px;
 }
 
-nav ul li ul li a {
-	background: transparent;
-	color: #555;
-	border-bottom: 1px solid #DDE0E7;
-}
 
-nav ul li ul li a:hover,
-nav ul li ul li a:focus {
-	background: #eee;
-	color: #111;
-}
-
-/*aqui*/
 *, *:before, *:after { 
 	margin:0;
 	padding:0;
@@ -197,7 +205,7 @@ nav ul li ul li a:focus {
 	transition: all 0.2s linear;
   }
   
-  input[type="button"]{
+  input[type="submit"]{
 	width: 100%!important;
 	cursor: pointer;  
 	background: black;
@@ -214,7 +222,7 @@ nav ul li ul li a:focus {
 	
 	transition: all 0.2s linear;
   }
-  input[type="button"]:hover{
+  input[type="submit"]:hover{
 	background: #4ab3c6;
   }
 
