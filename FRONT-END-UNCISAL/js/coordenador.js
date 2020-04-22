@@ -74,7 +74,7 @@ $(document).ready(function () {
         error: function (erro) {
           console.log(erro)
           alert("Erro ao tentar acessar")
-          window.location.replace("C:/NodeJS-REST-API/FRONT-END/index.html");
+          window.location.replace("index.html");
         }
       })
     })
