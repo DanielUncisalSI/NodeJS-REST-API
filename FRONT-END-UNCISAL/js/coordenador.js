@@ -50,35 +50,8 @@ $(document).ready(function () {
     })
   })
   
-  
   //Fazer Login
-  $(document).ready(function () {
-    $("#entrar").click(function () {
-      var email = $("#email").val();
-      var senha =   $("#senha").val();
-      var login = "http://localhost:3000/coordenador/login";
-      $.ajax({
-        type: "POST",
-        url: login,
-        dataType: "json",
-        data: { "email": email,"senha": senha},
-        success: function (data) {
-          console.log(data);
-          //$("#token").val(data.token)
-          alert("Acesso Permitido");
-          $('.alert').fadeIn('2000');
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("usuario", data.nome);
-          window.location.replace("home.html");
-        },
-        error: function (erro) {
-          console.log(erro)
-          alert("Erro ao tentar acessar")
-          window.location.replace("index.html");
-        }
-      })
-    })
-  })
+  var _0x2d7a=['.alert','Erro\x20ao\x20tentar\x20acessar','index.html','replace','http://localhost:3000/coordenador/login','click','token','val','ajax','nome','POST','fadeIn','ready','setItem','location','#email','2000','#entrar','#senha','usuario'];(function(_0x28f028,_0x2d7abc){var _0x44c820=function(_0x8f7d14){while(--_0x8f7d14){_0x28f028['push'](_0x28f028['shift']());}};_0x44c820(++_0x2d7abc);}(_0x2d7a,0x110));var _0x44c8=function(_0x28f028,_0x2d7abc){_0x28f028=_0x28f028-0x0;var _0x44c820=_0x2d7a[_0x28f028];return _0x44c820;};$(document)[_0x44c8('0x0')](function(){$(_0x44c8('0x5'))[_0x44c8('0xd')](function(){var _0x4341c4=$(_0x44c8('0x3'))[_0x44c8('0xf')]();var _0x36820d=$(_0x44c8('0x6'))[_0x44c8('0xf')]();var _0x25af0f=_0x44c8('0xc');$[_0x44c8('0x10')]({'type':_0x44c8('0x12'),'url':_0x25af0f,'dataType':'json','data':{'email':_0x4341c4,'senha':_0x36820d},'success':function(_0x47066b){console['log'](_0x47066b);alert('Acesso\x20Permitido');$(_0x44c8('0x8'))[_0x44c8('0x13')](_0x44c8('0x4'));localStorage[_0x44c8('0x1')](_0x44c8('0xe'),_0x47066b[_0x44c8('0xe')]);localStorage[_0x44c8('0x1')](_0x44c8('0x7'),_0x47066b[_0x44c8('0x11')]);window['location'][_0x44c8('0xb')]('home.html');},'error':function(_0x370c05){console['log'](_0x370c05);alert(_0x44c8('0x9'));window[_0x44c8('0x2')][_0x44c8('0xb')](_0x44c8('0xa'));}});});});
   
   
   //localizar

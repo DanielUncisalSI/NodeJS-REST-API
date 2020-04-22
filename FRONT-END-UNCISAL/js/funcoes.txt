@@ -1,0 +1,57 @@
+https://obfuscator.io/
+
+//function verificaToken(){
+  //if (localStorage.getItem("token")){
+   // console.log("Acesso permitido")
+    //}else{
+    //alert("Voce precisa está logado");
+    //window.location.replace("index.html");
+ // }
+//}
+
+
+//remove o localStorage 
+$(document).ready(function () {
+  $("#sair").click(function () {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+    alert("Saindo do sistema...!")
+  })
+  })
+
+   //mostrar usuario logado:
+  $(document).ready(function(){
+   if(localStorage.getItem("usuario")){ 
+   document.getElementById("usuario").innerText = "Usuário: "+localStorage.getItem("usuario");
+   }
+  })
+
+
+    //Fazer Login
+  $(document).ready(function () {
+    $("#entrar").click(function () {
+      var email = $("#email").val();
+      var senha =   $("#senha").val();
+      var login = "http://localhost:3000/coordenador/login";
+      $.ajax({
+        type: "POST",
+        url: login,
+        dataType: "json",
+        data: { "email": email,"senha": senha},
+        success: function (data) {
+          console.log(data);
+          //$("#token").val(data.token)
+          alert("Acesso Permitido");
+          $('.alert').fadeIn('2000');
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("usuario", data.nome);
+          window.location.replace("home.html");
+        },
+        error: function (erro) {
+          console.log(erro)
+          alert("Erro ao tentar acessar")
+          window.location.replace("index.html");
+        }
+      })
+    })
+  })

@@ -152,7 +152,7 @@ exports.loginCoordenador = function(req, res, next) {
                 if (result) {
                     const token = jwt.sign({
                         email: results[0].email,
-                        nome: results[0].email
+                        nome: results[0].nome
                     },
                         process.env.JWT_KEY,
                         {
