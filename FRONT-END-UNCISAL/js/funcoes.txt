@@ -1,5 +1,6 @@
 https://obfuscator.io/
 
+
 //function verificaToken(){
   //if (localStorage.getItem("token")){
    // console.log("Acesso permitido")
@@ -10,7 +11,7 @@ https://obfuscator.io/
 //}
 
 
-//remove o localStorage 
+//remove o localStorage
 $(document).ready(function () {
   $("#sair").click(function () {
     localStorage.removeItem("token");
@@ -51,6 +52,35 @@ $(document).ready(function () {
           console.log(erro)
           alert("Erro ao tentar acessar")
           window.location.replace("index.html");
+        }
+      })
+    })
+  })
+
+
+//Cadastrar coordenador
+  $(document).ready(function () {
+    $("#cadastrar").click(function () {
+      var nome =   $("#nome").val();
+      var email =   $("#email").val();
+      var senha =   $("#senha").val();
+      var matricula = $("#matricula").val();
+      var curso =   $("#option").val();
+      
+      var cadastrar = "http://localhost:3000/coordenador/cadastrar";
+      $.ajax({
+        type: "POST",
+        url: cadastrar,
+        dataType: "json",
+        data: { 
+          "nome": nome, "email": email, "senha": senha, 
+          "matricula": matricula, "curso":curso},
+        success: function (data) {
+          alert("Coordenador criado com sucesso")
+          window.location.replace("home.html");
+        },
+        error: function (erro) {
+            alert("Erro ao realizar o cadastro ")
         }
       })
     })

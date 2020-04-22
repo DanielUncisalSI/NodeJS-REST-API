@@ -22,12 +22,14 @@ exports.atualizaCoordenador = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'UPDATE COORDENADOR SET nome=?, email=?, curso=? WHERE matricula=?',
+            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
             [
+               
                 req.body.nome,
                 req.body.email,
+                req.body.senha,
                 req.body.curso,
-                req.body.matricula
+                req.params.matricula,
             ],
             (error, result, field) => {
                 conn.release()
@@ -35,9 +37,10 @@ exports.atualizaCoordenador = function (req, res) {
                 const response = {
                     mensagem: 'Coordenador atualizado com sucesso!',
                     coordenadorAtualizado: {
-                        matricula: req.body.matricula,
+                        matricula: req.params.matricula,
                         nome: req.body.nome,
                         email: req.body.email,
+                        senha: req.body.senha,
                         curso: req.body.curso,
                     }
                 }
@@ -101,6 +104,41 @@ exports.listaCoordenador = function (req, res) {
 }
 
 
+exports.atualizaCoordenador = function (req, res) {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
+            if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
+        conn.query(
+            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            [
+               
+                req.body.nome,
+                req.body.email,
+                hash,
+                req.body.curso,
+                req.params.matricula,
+            ],
+            (error, result, field) => {
+                conn.release()
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    mensagem: 'Coordenador atualizado com sucesso!',
+                    coordenadorAtualizado: {
+                        matricula: req.params.matricula,
+                        nome: req.body.nome,
+                        email: req.body.email,
+                        curso: req.body.curso,
+                    }
+                }
+                res.status(202).send(response)
+            })
+        })
+    })
+}
+
+
+
 exports.cadastrarCoordenador = function (req, res) {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ erro: error }) }
@@ -109,7 +147,7 @@ exports.cadastrarCoordenador = function (req, res) {
             function (error, result) {
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length > 0) {
-                    res.status(409).send({ mensagem: 'Coordenador já cadastrado NodeJS' })
+                    res.status(409).send({ mensagem: 'Coordenador já cadastrado' })
                 } else {
                     bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
                         if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
