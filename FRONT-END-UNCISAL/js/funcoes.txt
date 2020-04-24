@@ -151,3 +151,17 @@ $(document).ready(function () {
       })
     })
   })
+
+
+
+  {
+    "env" :{
+        "MYSQL_USER"     : "root",
+        "MYSQL_PASSWORD" : "root", 
+        "MYSQL_DATABASE" : "uncisal",
+        "MYSQL_HOST"     : "localhost",
+        "MYSQL_PORT"     : "3306",
+
+        "JWT_KEY" : "segredo"
+    }
+}

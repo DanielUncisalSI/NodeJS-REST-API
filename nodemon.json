@@ -1,10 +1,9 @@
 {
     "env" :{
-        "MYSQL_USER"     : "root",
-        "MYSQL_PASSWORD" : "root", 
-        "MYSQL_DATABASE" : "uncisal",
-        "MYSQL_HOST"     : "localhost",
-        "MYSQL_PORT"     : "3306",
+        "MYSQL_USER"     : "ubtlogistica2",
+        "MYSQL_PASSWORD" : "uncisal2020", 
+        "MYSQL_DATABASE" : "ubtlogistica2",
+        "MYSQL_HOST"     : "mysql.db5.net2.com.br",
 
         "JWT_KEY" : "segredo"
     }

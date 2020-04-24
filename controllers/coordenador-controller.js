@@ -18,57 +18,27 @@ exports.excluirCoordenador = function(req, res, next){
     })
 }
 
-exports.atualizaCoordenador = function (req, res) {
-    mysql.getConnection((error, conn) => {
-        if (error) { return res.status(500).send({ error: error }) }
-        conn.query(
-            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
-            [
-               
-                req.body.nome,
-                req.body.email,
-                req.body.senha,
-                req.body.curso,
-                req.params.matricula,
-            ],
-            (error, result, field) => {
-                conn.release()
-                if (error) { return res.status(500).send({ error: error }) }
-                const response = {
-                    mensagem: 'Coordenador atualizado com sucesso!',
-                    coordenadorAtualizado: {
-                        matricula: req.params.matricula,
-                        nome: req.body.nome,
-                        email: req.body.email,
-                        senha: req.body.senha,
-                        curso: req.body.curso,
-                    }
-                }
-                res.status(202).send(response)
-            }
-        )
-    })
-}
+
 
 
 exports.localizaCoordenador = function(req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query('SELECT * FROM COORDENADOR WHERE MATRICULA = ?',
+        conn.query('SELECT * FROM coordenadors WHERE matricula_coord = ?',
             [req.params.matricula],
             (error, result) => {
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length == 0) {
                     return res.status(404).send({
-                        mensagem: 'Não foi encontrado coordenador com esta matriucla'
+                        mensagem: 'Não foi encontrado coordenador com esta matrícula'
                     })
                 }
                 const response = {
                     coordenador: {
-                        matricula: result[0].matricula,
-                        nome: result[0].nome,
-                        email: result[0].email,
-                        curso: result[0].curso,
+                        matricula: result[0].matricula_coord,
+                        nome: result[0].nome_coord,
+                        email: result[0].email_coord,
+                        curso: result[0].curso_coord,
                     }
                 }
                 return res.status(200).send(response)
@@ -81,7 +51,7 @@ exports.localizaCoordenador = function(req, res) {
 exports.listaCoordenador = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT * FROM COORDENADOR `,
+        conn.query(`SELECT * FROM coordenadors `,
             //o segundo parametro é onde fica armazenado o resultado da query pode ser usado quaquer nome 
             function (error, result) {
                 if (error) { return res.status(500).send({ error: error }) }
@@ -104,13 +74,14 @@ exports.listaCoordenador = function (req, res) {
 }
 
 
+
 exports.atualizaCoordenador = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
             if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
         conn.query(
-            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            'UPDATE coordenadors SET nome_coord=?, email_coord=?, senha_coord=?, curso_coord=? WHERE matricula_coord=?',
             [
                
                 req.body.nome,
@@ -142,7 +113,7 @@ exports.atualizaCoordenador = function (req, res) {
 exports.cadastrarCoordenador = function (req, res) {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ erro: error }) }
-        conn.query('SELECT * FROM COORDENADOR WHERE matricula = ?',
+        conn.query('SELECT * FROM coordenadors WHERE matricula_coord = ?',
             [req.body.matricula],
             function (error, result) {
                 if (error) { return res.status(500).send({ error: error }) }
@@ -151,7 +122,7 @@ exports.cadastrarCoordenador = function (req, res) {
                 } else {
                     bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
                         if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
-                        conn.query('INSERT INTO COORDENADOR (nome, email, senha, matricula, curso) VALUES (? ,?, ?, ?, ?)',
+                        conn.query('INSERT INTO coordenadors (nome_coord, email_coord, senha_coord, matricula_coord, curso_coord) VALUES (? ,?, ?, ?, ?)',
                             [req.body.nome, req.body.email, hash, req.body.matricula, req.body.curso],
                             function (error, result) {
                                 conn.release()
@@ -176,21 +147,21 @@ exports.cadastrarCoordenador = function (req, res) {
 exports.loginCoordenador = function(req, res, next) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        const query = `SELECT * FROM COORDENADOR WHERE email = ? `;
+        const query = `SELECT * FROM coordenadors WHERE email_coord = ? `;
         conn.query(query, [req.body.email], (error, results, fields) => {
             conn.release();
             if (error) { return res.status(500).send({ error: error }) }
             if (results.length < 1) {
                 return res.status(401).send({ mensagem: 'Falha na autenticação do e-mail!' })
             }
-            bcrypt.compare(req.body.senha, results[0].senha, (err, result) => {
+            bcrypt.compare(req.body.senha, results[0].senha_coord, (err, result) => {
                 if (err) {
                     return res.status(401).send({ mensagem: 'Falha na autenticação da senha!' })
                 }
                 if (result) {
                     const token = jwt.sign({
-                        email: results[0].email,
-                        nome: results[0].nome
+                        email: results[0].email_coord,
+                        nome: results[0].nome_coord
                     },
                         process.env.JWT_KEY,
                         {
@@ -199,7 +170,8 @@ exports.loginCoordenador = function(req, res, next) {
                     return res.status(200).send({
                         mensagem: 'Autenticado com sucesso',                       
                         token: token,
-                        nome: results[0].nome,
+                        nome: results[0].nome_coord,
+                        curso: results[0].curso_coord,
                     });
                 }
                 return res.status(401).send({ mensagem: 'Falha na autenticação!' })
@@ -207,3 +179,36 @@ exports.loginCoordenador = function(req, res, next) {
         });
     });
 }
+
+
+
+
+/*exports.atualizaCoordenador = function (req, res) {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            [   req.body.nome,
+                req.body.email,
+                req.body.senha,
+                req.body.curso,
+                req.params.matricula,],
+            (error, result, field) => {
+                conn.release()
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    mensagem: 'Coordenador atualizado com sucesso!',
+                    coordenadorAtualizado: {
+                        matricula: req.params.matricula,
+                        nome: req.body.nome,
+                        email: req.body.email,
+                        senha: req.body.senha,
+                        curso: req.body.curso,
+                    }
+                }
+                res.status(202).send(response)
+            }
+        )
+    })
+}
+*/

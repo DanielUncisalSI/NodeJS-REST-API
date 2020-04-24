@@ -33,7 +33,7 @@ $(document).ready(function () {
       
       event.preventDefault();
       $.ajax({
-        type: "post",
+        type: "POST",
         url: atualizar,
         dataType: "json",
         data: { 
