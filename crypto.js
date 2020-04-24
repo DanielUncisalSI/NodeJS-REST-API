@@ -1,4 +1,3 @@
-
 const DADOS_CRIPTOGRAFAR = {
     algoritmo : "aes256",
     segredo : "chaves",
@@ -6,7 +5,6 @@ const DADOS_CRIPTOGRAFAR = {
 }
 
 const crypto = require("crypto")
-
 
  function criptografar(senha){
     const cipher = crypto.createCipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo)
