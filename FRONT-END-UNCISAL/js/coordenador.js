@@ -1,11 +1,11 @@
 //Excluir coordenador
 $(document).ready(function () {
     $("#excluir").click(function () {
-      var matricula = $("#matriculaD").val();
+      var matricula = $("#matricula").val();
       var excluir = "http://localhost:3000/coordenador/excluir/"+matricula;
                 
       $.ajax({
-        type: "POST",
+        type: "DELETE",
         url: excluir,
         dataType: "json",
         data: { "matricula": matricula},
@@ -33,7 +33,7 @@ $(document).ready(function () {
       
       event.preventDefault();
       $.ajax({
-        type: "POST",
+        type: "PATCH",
         url: atualizar,
         dataType: "json",
         data: { 

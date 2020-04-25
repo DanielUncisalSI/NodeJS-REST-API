@@ -8,7 +8,7 @@ const rotaCoordenador = require('./routes/coordenador')
 var cors = require('cors');
 
 // use it before all route definitions
-app.use(cors({origin: 'http://localhost:3000'}));
+//app.use(cors({origin: 'http://localhost:3000'}));
 
 app.use(express.json())
 app.use(bodyParser.urlencoded(
