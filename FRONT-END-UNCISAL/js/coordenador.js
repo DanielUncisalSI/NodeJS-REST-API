@@ -89,10 +89,11 @@ $(document).ready(function () {
 
   
   //localizar coordenador
-  $(document).ready(function(){
-    $("#localizar").click(function(){
-      var mat= $("#matricula").val();
-      var urlLocalizar = "http://localhost:3000/coordenador/localizar/"+ mat;
+  //$(document).ready(function(){
+    //$("#localizar").click(function(){
+      function localizar(){  
+    var mat= $("#matricula").val();
+      var urlLocalizar = "http://localhost:3000/coordenador/localizar"+ mat;
       $.ajax({
         url : urlLocalizar,
         type : "GET",
@@ -111,8 +112,9 @@ $(document).ready(function () {
           alert("Matricula não encontrada")
         }
       })
-    })
-  })
+    }
+    //})
+  //})
   
   //Cadastrar coordenador
   $(document).ready(function () {
@@ -146,7 +148,7 @@ $(document).ready(function () {
   })
 
    
-    function criarTabela(){
+    function listar(){
       var corpoTabela = $('#corpo');
       var listar = "http://localhost:3000/coordenador/listar";
       //$("#corpo").remove();
@@ -158,7 +160,9 @@ $(document).ready(function () {
           $.each(data, function(index, item){
             for(var i=0; i<item.length; i++){
               var row = document.createElement('tr');
-              row.innerHTML = '<td>'+item[i].matricula+'</td>' +  '<td>'+item[i].nome+'</td>' + '<td>'+item[i].email+'</td>'+ '<td>'+item[i].curso+'</td>' +     '<td>'+ '<a href="#" >Editar</a>' + '   '+'<a href="#" >Excluir</a>' +'</td>';
+              row.innerHTML = '<td>'+item[i].matricula+'</td>' +  '<td>'+item[i].nome+'</td>' + '<td>'+item[i].email+'</td>'+ '<td>'+item[i].curso+'</td>' +
+              '<td>'+ '<a href="editarCoordenador.html?id='+ item[i].matricula +'"'  +' >Editar</a>' + '   '+'<a href="editarCoordenador.html" >Excluir</a>' +'</td>';
+                                                  
               corpoTabela.append(row);
             }
           })
