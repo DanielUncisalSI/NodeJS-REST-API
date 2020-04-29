@@ -1,25 +1,27 @@
 //Excluir coordenador
-$(document).ready(function () {
-  $("#excluir").click(function () {
+//$(document).ready(function () {
+  //$("#excluir").click(function () {
+    function excluir(){
     var matricula = $("#matricula").val();
-    var excluir = "http://localhost:3000/coordenador/excluir/" + matricula;
-
-    $.ajax({
-      type: "DELETE",
-      url: excluir,
-      dataType: "json",
-      data: { "matricula": matricula },
-      success: function (data) {
-        console.log(data);
-        alert("Coordenador excluido com sucesso!")
-      },
-      error: function (erro) {
-        console.log(erro)
-        alert(erro)
-      }
-    })
-  })
-})
+    url = window.location.href
+    var parametro = url.split("=")[1]
+    alert(parametro)    
+    //var excluir = "http://localhost:3000/coordenador/excluir/" + matricula;
+    //$.ajax({
+     // type: "DELETE",
+     // url: excluir,
+     // dataType: "json",
+     // data: { "matricula": matricula },
+     // success: function (data) {
+       // console.log(data);
+       // alert("Coordenador excluido com sucesso!")
+     // },
+     // error: function (erro) {
+       // console.log(erro)
+        //alert(erro)
+    //  }
+    //})
+  }
 
 //Atualizar coordenador
 $(document).ready(function () {
@@ -163,8 +165,9 @@ function listar() {
           var row = document.createElement('tr');
 
           row.innerHTML = '<td>' + item[i].matricula + '</td>' + '<td>' + item[i].nome + '</td>' + '<td>' + item[i].email + '</td>' + '<td>' + item[i].curso + '</td>' +
-            '<td>' + '<a href="editarCoordenador.html?id=' + item[i].matricula + '"' + ' >Editar</a>' + '   ' + '<a href="editarCoordenador.html" >Excluir</a>' + '</td>';
-
+            '<td>'
+             + '<a href="editarCoordenador.html?id=' + item[i].matricula + '"' + ' >Editar</a>' + '   '
+             + '<a href="listarCoordenador.html?cod=' +item[i].matricula + '"' +'+ onclick="excluir()" >Excluir</a>' + '</td>';
           corpoTabela.append(row);
 
         }
@@ -173,6 +176,9 @@ function listar() {
   })
 }
 
-
+//cpf = 080 598 524 77
+  // VANDERLEIA MARIA ALEXANDRE
+  //13/08/1986
+  //ednaldofreire62@gmail.com 
 
 
