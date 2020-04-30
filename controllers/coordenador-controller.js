@@ -18,15 +18,13 @@ exports.excluirCoordenador = function(req, res, next){
     })
 }
 
-
-
-
 exports.localizaCoordenador = function(req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query('SELECT * FROM COORDENADOR WHERE matricula = ?',
             [req.params.matricula],
             (error, result) => {
+                conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length == 0) {
                     return res.status(404).send({
@@ -54,7 +52,9 @@ exports.listaCoordenador = function (req, res) {
         conn.query(`SELECT * FROM COORDENADOR `,
             //o segundo parametro é onde fica armazenado o resultado da query pode ser usado quaquer nome 
             function (error, result) {
+                conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
+                
                 const response = {
                     quantidade: result.length,
                     Coordenador: result.map(coor => {
@@ -91,7 +91,6 @@ exports.atualizaCoordenador = function (req, res) {
                 req.params.matricula,
             ],
             (error, result, field) => {
-                conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 const response = {
                     mensagem: 'Registro atualizado com sucesso!',
@@ -116,6 +115,7 @@ exports.cadastrarCoordenador = function (req, res) {
         conn.query('SELECT * FROM COORDENADOR WHERE matricula = ?',
             [req.body.matricula],
             function (error, result) {
+                conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length > 0) {
                     res.status(409).send({ mensagem: 'E-mail já cadastrado' })
@@ -125,7 +125,7 @@ exports.cadastrarCoordenador = function (req, res) {
                         conn.query('INSERT INTO COORDENADOR (nome, email, senha, matricula, curso) VALUES (? ,?, ?, ?, ?)',
                             [req.body.nome, req.body.email, hash, req.body.matricula, req.body.curso],
                             function (error, result) {
-                                conn.release()
+                              
                                 if (error) { return res.status(500).send({ error: error }) }
                                 var response = {
                                     mensagem: 'Registro salvo com sucesso!',

@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
     <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
     integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
     crossorigin = "anônimo" > </script>  
@@ -17,7 +16,12 @@
    
 </head>
 <body onpageshow="listar()" onload="verificaToken()">
- 
+  <br>
+<div>  
+  <a href="cadastrocoordenador.html" class="btn btn-success">Adcionar Coordenador</a>
+</div>
+<br>
+  
   <table id="tabela" class="table">
     <thead class="thead-dark">
       <tr>
@@ -32,24 +36,7 @@
      
     </tbody>
   </table>
-  <div>   
-    Listar usuarios   <br>
-    <div class="conteudo">
-     
-    </div>
-<div>
-    <table id="tabela">
-   
-  </table>
-</div>
-    
-
-    <input type="button" onclick="criarTabela()" value="Criar tabela">
-  </div><br><br>
-
-   
-          
-      
+         
 </body>
 
 </html>

@@ -52,6 +52,7 @@ $(document).ready(function () {
         $("#email").attr("disabled");
         $("#senha").attr("disabled");
         $("#atualizar").attr("disabled");
+        window.location.replace("listarCoordenador.html");
       },
       error: function (erro) {
         alert("Erro ao tentar atualizar o registro")
@@ -140,7 +141,7 @@ $(document).ready(function () {
       success: function (data) {
         alert("Operação realizado com sucesso ")
         console.log(data)
-        //window.location.replace("home.html");
+        window.location.replace("listarCoordenador.html");
       },
       error: function (erro) {
         alert("Erro ao realizar a operação ")
