@@ -81,13 +81,14 @@ exports.atualizaCoordenador = function (req, res) {
         bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
             if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
         conn.query(
-            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            'UPDATE COORDENADOR SET matricula=?, nome=?, email=?, senha=?, curso=? WHERE matricula=?',
             [
-               
+                req.body.mat,
                 req.body.nome,
                 req.body.email,
                 hash,
                 req.body.curso,
+                
                 req.params.matricula,
             ],
             (error, result, field) => {
@@ -96,6 +97,7 @@ exports.atualizaCoordenador = function (req, res) {
                     mensagem: 'Registro atualizado com sucesso!',
                     coordenadorAtualizado: {
                         matricula: req.params.matricula,
+                        mat: req.body.mat,
                         nome: req.body.nome,
                         email: req.body.email,
                         curso: req.body.curso,

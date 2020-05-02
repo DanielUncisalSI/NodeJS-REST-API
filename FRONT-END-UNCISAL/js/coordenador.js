@@ -1,37 +1,16 @@
-//Excluir coordenador
-//$(document).ready(function () {
-  //$("#excluir").click(function () {
-    function excluir(){
-    var matricula = $("#matricula").val();
-    url = window.location.href
-    var parametro = url.split("=")[1]
-    alert(parametro)    
-    //var excluir = "http://localhost:3000/coordenador/excluir/" + matricula;
-    //$.ajax({
-     // type: "DELETE",
-     // url: excluir,
-     // dataType: "json",
-     // data: { "matricula": matricula },
-     // success: function (data) {
-       // console.log(data);
-       // alert("Coordenador excluido com sucesso!")
-     // },
-     // error: function (erro) {
-       // console.log(erro)
-        //alert(erro)
-    //  }
-    //})
-  }
 
 //Atualizar coordenador
 $(document).ready(function () {
   $("#atualizar").click(function () {
+    url = window.location.href
+    var mat = url.split("=")[1]
+
     var matricula = $("#matricula").val();
     var nome = $("#nome").val();
     var email = $("#email").val();
     var curso = $("#Curso").val();
     var senha = $("#senha").val();
-    var atualizar = "http://localhost:3000/coordenador/atualizar/" + matricula;
+    var atualizar = "http://localhost:3000/coordenador/atualizar/" + mat;
 
     event.preventDefault();
     $.ajax({
@@ -39,6 +18,7 @@ $(document).ready(function () {
       url: atualizar,
       dataType: "json",
       data: {
+        "mat": matricula,
         "nome": nome,
         "email": email,
         "curso": curso,
@@ -48,10 +28,6 @@ $(document).ready(function () {
         console.log(data);
         alert("Registro atualizado com sucesso")
         $("#senha").val("");
-        $("#nome").attr("disabled");
-        $("#email").attr("disabled");
-        $("#senha").attr("disabled");
-        $("#atualizar").attr("disabled");
         window.location.replace("listarCoordenador.html");
       },
       error: function (erro) {
@@ -92,33 +68,7 @@ $(document).ready(function () {
 })
 
 
-//localizar coordenador
-//$(document).ready(function(){
-//$("#localizar").click(function(){
-function localizar() {
-  url = window.location.href
-  var parametro = url.split("=")[1]
-  var urlLocalizar = "http://localhost:3000/coordenador/localizar/" + parametro;
-  $.ajax({
-    url: urlLocalizar,
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      $("#nome").val(data.coordenador.nome);
-      $("#email").val(data.coordenador.email);
-      $("#curso").val(data.coordenador.curso);
-      $("#matricula").val(data.coordenador.matricula);
 
-      console.log(data)
-    },
-    error: function (erro) {
-      alert("Matricula não encontrada")
-
-    }
-  })
-}
-//})
-//})
 
 //Cadastrar coordenador
 $(document).ready(function () {
@@ -164,11 +114,12 @@ function listar() {
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
-
+          //.php?db=ubtlogistica2&table=COORDENADOR
           row.innerHTML = '<td>' + item[i].matricula + '</td>' + '<td>' + item[i].nome + '</td>' + '<td>' + item[i].email + '</td>' + '<td>' + item[i].curso + '</td>' +
             '<td>'
-             + '<a href="editarCoordenador.html?id=' + item[i].matricula + '"' + ' >Editar</a>' + '   '
-             + '<a href="listarCoordenador.html?cod=' +item[i].matricula + '"' +'+ onclick="excluir()" >Excluir</a>' + '</td>';
+            + '<a href="editarCoordenador.html?id=' + item[i].matricula + ' "' + ' >Editar</a>'
+            + '   '
+            + '<a href="excluirCoordenador.html?mat=' + item[i].matricula + '"' + '+ onclick="excluir()" >Excluir</a>' + '</td>';
           corpoTabela.append(row);
 
         }
@@ -177,9 +128,55 @@ function listar() {
   })
 }
 
-//cpf = 080 598 524 77
-  // VANDERLEIA MARIA ALEXANDRE
-  //13/08/1986
-  //ednaldofreire62@gmail.com 
+//Excluir coordenador
+//$(document).ready(function () {
+//$("#excluir").click(function () {
+function excluir() {
+  var matricula = $("#matricula").val();
+  url = window.location.href
+  var mat = url.split("=")[1]
+  var excluir = "http://localhost:3000/coordenador/excluir/" + mat;
+  $.ajax({
+    type: "DELETE",
+    url: excluir,
+    dataType: "json",
+    data: { "matricula": matricula },
+    success: function (data) {
+      console.log(data);
+      alert("Coordenador excluido com sucesso!")
+      window.location.replace("listarCoordenador.html");
+    },
+    error: function (erro) {
+      console.log(erro)
+      alert(erro)
+    }
+  })
+}
 
 
+//localizar coordenador
+//$(document).ready(function(){
+//$("#localizar").click(function(){
+function localizar() {
+  url = window.location.href
+  var mat = url.split("=")[1]
+  var urlLocalizar = "http://localhost:3000/coordenador/localizar/" + mat;
+  $.ajax({
+    url: urlLocalizar,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      $("#nome").val(data.coordenador.nome);
+      $("#email").val(data.coordenador.email);
+      $("#curso").val(data.coordenador.curso);
+      $("#matricula").val(data.coordenador.matricula);
+      console.log(data)
+    },
+    error: function (erro) {
+      alert("Matricula não encontrada")
+
+    }
+  })
+}
+  //})
+  //})
