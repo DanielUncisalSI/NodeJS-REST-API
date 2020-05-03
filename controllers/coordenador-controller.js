@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 exports.excluirCoordenador = function(req, res, next){
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query('DELETE FROM COORDENADOR WHERE MATRICULA = ?', [req.params.matricula],
+        conn.query('DELETE FROM COORDENADOR WHERE matricula = ?', [req.params.matricula],
             (error, result, field) => {
                 conn.release()
                 if (error) { return res.status(500).send({ error: error + req.body.matricula + " não existe" }) }
@@ -28,7 +28,7 @@ exports.localizaCoordenador = function(req, res) {
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length == 0) {
                     return res.status(404).send({
-                        mensagem: 'Não foi encontrado esta matrícula'
+                        mensagem: 'Não encontrado'
                     })
                 }
                 const response = {
@@ -36,7 +36,6 @@ exports.localizaCoordenador = function(req, res) {
                         matricula: result[0].matricula,
                         nome: result[0].nome,
                         email: result[0].email,
-                        curso: result[0].curso,
                     }
                 }
                 return res.status(200).send(response)
@@ -59,11 +58,10 @@ exports.listaCoordenador = function (req, res) {
                     quantidade: result.length,
                     Coordenador: result.map(coor => {
                         return {
+                            id_coordenador: coor.id_coordenador,
                             matricula: coor.matricula,
                             nome: coor.nome,
-                            email: coor.email,
-                            curso: coor.curso,
-                           
+                            email: coor.email,                           
                         }
                     })
                 }
@@ -81,14 +79,12 @@ exports.atualizaCoordenador = function (req, res) {
         bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
             if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
         conn.query(
-            'UPDATE COORDENADOR SET matricula=?, nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            'UPDATE COORDENADOR SET matricula=?, nome=?, email=?, senha=? WHERE matricula=?',
             [
                 req.body.mat,
                 req.body.nome,
                 req.body.email,
                 hash,
-                req.body.curso,
-                
                 req.params.matricula,
             ],
             (error, result, field) => {
@@ -100,7 +96,6 @@ exports.atualizaCoordenador = function (req, res) {
                         mat: req.body.mat,
                         nome: req.body.nome,
                         email: req.body.email,
-                        curso: req.body.curso,
                     }
                 }
                 res.status(202).send(response)
@@ -124,8 +119,8 @@ exports.cadastrarCoordenador = function (req, res) {
                 } else {
                     bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
                         if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
-                        conn.query('INSERT INTO COORDENADOR (nome, email, senha, matricula, curso) VALUES (? ,?, ?, ?, ?)',
-                            [req.body.nome, req.body.email, hash, req.body.matricula, req.body.curso],
+                        conn.query('INSERT INTO COORDENADOR (nome, email, senha, matricula) VALUES (? ,?, ?, ?)',
+                            [req.body.nome, req.body.email, hash, req.body.matricula],
                             function (error, result) {
                               
                                 if (error) { return res.status(500).send({ error: error }) }
@@ -134,8 +129,7 @@ exports.cadastrarCoordenador = function (req, res) {
                                     usuarioCriado: {
                                         nome: req.body.nome,
                                         email: req.body.email,
-                                        matricula: req.body.matricula,
-                                        curso: req.body.curso
+                                        matricula: req.body.matricula
                                     }
                                 }
                                 return res.status(201).send({ response })
@@ -169,7 +163,7 @@ exports.loginCoordenador = function(req, res, next) {
                         mensagem: 'Autenticado com sucesso',                       
                         token: token,
                         nome: results[0].nome,
-                        curso: results[0].curso}); 
+                        }); 
                     }
                 return res.status(401).send({ mensagem: 'Falha na autenticação!' })
             });
@@ -184,11 +178,11 @@ exports.loginCoordenador = function(req, res, next) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, curso=? WHERE matricula=?',
+            'UPDATE COORDENADOR SET nome=?, email=?, senha=?, id_curso=? WHERE matricula=?',
             [   req.body.nome,
                 req.body.email,
                 req.body.senha,
-                req.body.curso,
+                req.body.id_curso,
                 req.params.matricula,],
             (error, result, field) => {
                 conn.release()
@@ -200,7 +194,7 @@ exports.loginCoordenador = function(req, res, next) {
                         nome: req.body.nome,
                         email: req.body.email,
                         senha: req.body.senha,
-                        curso: req.body.curso,
+                        id_curso: req.body.id_curso,
                     }
                 }
                 res.status(202).send(response)
