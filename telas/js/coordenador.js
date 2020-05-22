@@ -1,7 +1,3 @@
-function ok(){
-  alert("DEu certo")
-}
-
 //Editar coordenador
 function editar(){
     var url = window.location.href
@@ -36,7 +32,7 @@ function editar(){
 
 //Fazer Login
 $(document).ready(function () {
-  $("#entrar").click(function () {
+  $("#acessar").click(function () {
     var email = $("#email").val();
     var senha = $("#senha").val();
     var login = "http://localhost:3000/coordenador/login";
@@ -67,8 +63,7 @@ $(document).ready(function () {
 
 
 //Cadastrar coordenador
-$(document).ready(function () {
-  $("#cadastrar").click(function () {
+       function cadastrar(){
     var nome = $("#nome").val();
     var email = $("#email").val();
     var senha = $("#senha").val();
@@ -86,15 +81,15 @@ $(document).ready(function () {
       success: function (data) {
         alert("Operação realizado com sucesso ")
         console.log(data)
-        window.location.replace("listarCoordenador.html");
+        window.location.replace("buscarCoordernador.html");
       },
       error: function (erro) {
         alert("Erro ao realizar a operação ")
         console.log(erro)
       }
     })
-  })
-})
+  }
+
 
 
 function listar() {

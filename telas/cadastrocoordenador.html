@@ -90,7 +90,7 @@
               
               <p> 
                 <label for="senha_cad"></label>
-                <input id="senha@" name="senha" required="required" type="password" placeholder="Senha"/>
+                <input id="senha" name="senha" required="required" type="password" placeholder="Senha"/>
               </p>
               
               <p>
@@ -99,28 +99,7 @@
               </p>
               
               <p> 
-                
-                  <select name="Curso" id="option">
-                  <option selected disabled>Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
-                </select>
-                
-              </p>
-
-              <p> 
-                <input type="submit" value="Cadastrar"/> 
+                <input type="submit" onclick="cadastrar()" value="Cadastrar"/> 
               </p>
             </div>
           </form>
@@ -128,6 +107,8 @@
       </div>
     </div>
  </form>
+ <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/coordenador.js"></script>
  <script src="js/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="js/bootstrap.min.js"></script>
