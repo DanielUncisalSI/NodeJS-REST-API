@@ -1,0 +1,12 @@
+#Listar coordenadores
+get http://localhost:3000/coordenador/listar
+Content-Type: application/json
+
+###
+post http://localhost:3000/coordenador/login
+Content-Type: application/json
+
+{
+ "email":"paulo@gmail.com",
+ "senha":"123456"
+}

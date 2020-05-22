@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/editarCoordenador.css">
-    <script type="text/javascript" src="js/main.js"></script>
-
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
     <title>Editar Coordenador</title>
 </head>
-<body>
+<body  onpageshow="localizar()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -85,48 +84,23 @@
               <p> 
                 <label for="email_cad"></label>
                 <input id="email" name="email" required="required" type="email" placeholder="E-mail"/> 
-              </p>
-              
-              <p> 
-                <label for="senha_cad"></label>
-                <input id="senha" name="senha" required="required" type="password" placeholder="Senha"/>
-              </p>
-              
+              </p>        
               <p> 
                 <label for="matricula_cad"></label>
                 <input id="matricula" name="matricula" required="required" type="text" placeholder="Matricula"/>
               </p>
 
               <p> 
-                
-                  <select name="Curso" id="curso">
-                  <option selected disabled>Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
-                </select>
-                
-              </p>
-
-              <p> 
-                <input type="submit" value="Atualizar"/> 
+                <input type="submit" onclick="editar()"  id="atualizar"  value="Atualizar"/> 
               </p>
             </form>
           </div>
         </div>
       </div>
     </div>
- </form>
+  </form>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/coordenador.js"></script>
  <script src="js/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="js/bootstrap.min.js"></script>

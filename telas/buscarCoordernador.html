@@ -2,15 +2,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" type="text/css" href="css/buscarCoordenador.css">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    
 
 
     <title>BuscarCoordenador</title>
 </head>
-<body>
+<body onpageshow="listar()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -105,6 +105,7 @@
               </p>
               <p>
                 <input type="submit" value="Buscar"/> 
+                <input type="submit" value="Imprimir"/>
               </p>
             </form>
             <hr>
@@ -113,40 +114,24 @@
               <tr>
                 <th class="n">NOME</th>
                 <th class="m">MATRÍCULA</th>
-                <th class="c">CURSO</th>
                 <th class="e">E-MAIL</th>
-               <button> <th class="s"></th></button>
+                <th class="e">AÇÕES</th>
+               <button> <class class="s"></class>
               </tr>
               </thead>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <button ><a class="preto" href="editarCoordenador.html">EDITAR</a> </button>
-                  <button ><a class="preto" href="">EXCLUIR</a> </button></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> 
-                </td>
-              </tr>
+              <tbody id="corpo">
+     
+              </tbody>
             </table><br>
-            <input type="submit" value="Imprimir"/> 
-            </form>
+            
+            </form>     
       </div>
+      
       </div>
+      
     </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/coordenador.js"></script>
   <script src="js/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<script src="js/bootstrap.min.js"></script>
