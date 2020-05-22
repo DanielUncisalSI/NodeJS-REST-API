@@ -9,7 +9,7 @@ exports.obrigatorio =(req, res, next)=>{
         res.usuario = decode;
         next();
     } catch (error) {
-        return res.status(401).send({mensagem : 'Usuário não autenticado no token'})
+        return res.status(401).send({mensagem : 'Usuário não logado'})
     }
 }
 

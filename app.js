@@ -1,14 +1,15 @@
 const express = require('express')
 const app = express();
-//const morgan = require('morgan') //criar logs
+const morgan = require('morgan') //criar logs
 const bodyParser = require('body-parser')
 
 
 const rotaCoordenador = require('./routes/coordenador')
-var cors = require('cors');
+const rotaCurso = require('./routes/curso')
+const rotaDisciplina = require('./routes/disciplina');
+const rotaDocente = require('./routes/docente');
 
-// use it before all route definitions
-//app.use(cors({origin: 'http://localhost:3000'}));
+var cors = require('cors');
 
 app.use(express.json())
 app.use(bodyParser.urlencoded(
@@ -27,9 +28,12 @@ app.use((req, res, next)=>{
     }
     next();
 })
-//app.use(morgan('dev'))
+app.use(morgan('dev'))
 
 app.use('/coordenador',rotaCoordenador)
+app.use('/curso', rotaCurso)
+app.use('/disciplina',rotaDisciplina);
+app.use('/docente',rotaDocente);
 
 
 //quando não encontra rota

@@ -5,12 +5,12 @@ const jwt = require('jsonwebtoken')
 exports.excluirCoordenador = function(req, res, next){
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query('DELETE FROM COORDENADOR WHERE matricula = ?', [req.params.matricula],
+        conn.query('DELETE FROM COORDENADOR WHERE id_coordenador = ?', [req.params.id_coordenador],
             (error, result, field) => {
                 conn.release()
-                if (error) { return res.status(500).send({ error: error + req.body.matricula + " não existe" }) }
+                if (error) { return res.status(500).send({ error: error +"não existe" }) }
                 const response = {
-                    mensagem: 'Registro ' + req.params.matricula + ' excluído com sucesso!',
+                    mensagem: 'Registro excluído com sucesso!',
                 }
                 return res.status(202).send(response)
             }
@@ -21,14 +21,14 @@ exports.excluirCoordenador = function(req, res, next){
 exports.localizaCoordenador = function(req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query('SELECT * FROM COORDENADOR WHERE matricula = ?',
-            [req.params.matricula],
+        conn.query('SELECT * FROM COORDENADOR WHERE id_coordenador = ?',
+            [req.params.id_coordenador],
             (error, result) => {
                 conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length == 0) {
                     return res.status(404).send({
-                        mensagem: 'Não encontrado'
+                        mensagem: 'Não encontrado o id'
                     })
                 }
                 const response = {
@@ -76,31 +76,27 @@ exports.listaCoordenador = function (req, res) {
 exports.atualizaCoordenador = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
-            if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
         conn.query(
-            'UPDATE COORDENADOR SET matricula=?, nome=?, email=?, senha=? WHERE matricula=?',
+            'UPDATE COORDENADOR SET matricula=?, nome=?, email=? WHERE id_coordenador=?',
             [
-                req.body.mat,
+                req.body.matricula,
                 req.body.nome,
                 req.body.email,
-                hash,
-                req.params.matricula,
+                req.params.id_coordenador,
             ],
             (error, result, field) => {
                 if (error) { return res.status(500).send({ error: error }) }
                 const response = {
                     mensagem: 'Registro atualizado com sucesso!',
                     coordenadorAtualizado: {
-                        matricula: req.params.matricula,
-                        mat: req.body.mat,
+                        id_coordenador: req.params.id_coordenador,
+                        matricula: req.body.matricula,
                         nome: req.body.nome,
                         email: req.body.email,
                     }
                 }
                 res.status(202).send(response)
             })
-        })
     })
 }
 
@@ -115,7 +111,7 @@ exports.cadastrarCoordenador = function (req, res) {
                 conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length > 0) {
-                    res.status(409).send({ mensagem: 'E-mail já cadastrado' })
+                    res.status(409).send({ mensagem: 'Já existe um coordenador cadastrado com essa matricula' })
                 } else {
                     bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
                         if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
