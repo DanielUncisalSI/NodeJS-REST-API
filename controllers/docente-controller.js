@@ -19,7 +19,7 @@ exports.excluirDocente = function (req, res, next) {
 exports.localizarDocente = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT d.id_docente, d.nome, d.matricula, d.id_curso, d.dias, c.nome as curso
+        conn.query(`SELECT d.id_docente, d.nome, d.matricula, d.id_curso , d.dias, c.id_curso as id_cursos, c.nome as curso
                     FROM DOCENTE as d
                     JOIN CURSO AS c ON d.id_curso = c.id_curso
                     WHERE id_docente = ?`,
@@ -37,7 +37,8 @@ exports.localizarDocente = function (req, res) {
                         id_docente: result[0].id_docente,
                         nome: result[0].nome,
                         matricula: result[0].matricula,
-                        curso: result[0].curso,
+                        curso:     result[0].curso,
+                        id_cursos: result[0].id_cursos,
                         dias: result[0].dias
                     }
                 }

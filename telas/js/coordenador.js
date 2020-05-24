@@ -99,7 +99,6 @@ function listar() {
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
-          //.php?db=ubtlogistica2&table=COORDENADOR
           row.innerHTML = 
             '<td>' + item[i].nome + '</td>'
             + '<td>' + item[i].matricula + '</td>'

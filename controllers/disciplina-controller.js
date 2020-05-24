@@ -19,7 +19,7 @@ exports.excluirDisciplina = function(req, res, next){
 exports.localizaDisciplina = function(req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT c.id_disciplina, c.nome, c.horas, c.periodo, doc.nome AS docente, cur.nome AS curso
+        conn.query(`SELECT c.id_disciplina, c.nome, c.horas, c.periodo, doc.id_docente as id_docentes, doc.nome AS docente, cur.id_curso as id_cursos, cur.nome AS curso
         FROM DISCIPLINA AS c
         JOIN DOCENTE AS doc ON c.id_docente = doc.id_docente
         JOIN CURSO AS cur ON c.id_curso = cur.id_curso
@@ -38,7 +38,9 @@ exports.localizaDisciplina = function(req, res) {
                         id_disciplina: result[0].id_disciplina,
                         nome: result[0].nome,
                         curso: result[0].curso,
+                        id_cursos: result[0].id_cursos,
                         docente: result[0].docente,
+                        id_docentes: result[0].id_docentes,
                         horas: result[0].horas,
                         periodo: result[0].periodo,
                     }
@@ -53,7 +55,7 @@ exports.localizaDisciplina = function(req, res) {
 exports.listaDisciplina = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT c.id_disciplina, c.nome, c.horas, c.periodo, doc.nome AS docente, cur.nome AS curso
+        conn.query(`SELECT c.id_disciplina, c.nome, c.horas, c.periodo,  doc.nome AS docente, cur.nome AS curso
                     FROM DISCIPLINA AS c
                     JOIN DOCENTE AS doc ON c.id_docente = doc.id_docente
                     JOIN CURSO AS cur ON c.id_curso = cur.id_curso;

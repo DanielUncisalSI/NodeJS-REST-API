@@ -130,10 +130,8 @@ function localizar(){
     dataType: "json",
     success: function (data) {
      $("#disciplina").val(data.disciplina.nome);
-     $("#horas").val(data.disciplina.horas);
-     $("#cursos").val(data.disciplina.curso);
-     $("#professor").val(data.disciplina.docente);
-     $("#periodo").val(data.disciplina.periodo);
+     $("#cursos").val(data.disciplina.id_cursos);
+     $("#professor").val(data.disciplina.id_docentes);
       console.log(data)
     },
     error: function (erro) {

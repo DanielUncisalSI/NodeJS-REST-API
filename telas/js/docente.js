@@ -163,6 +163,7 @@ function localizar() {
     success: function (data) {
       $("#nome").val(data.Docente.nome);
       $("#matricula").val(data.Docente.matricula);
+      $("#cursos").val(data.Docente.id_cursos);
       console.log(data)
     },
     error: function (erro) {
