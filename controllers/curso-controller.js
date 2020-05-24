@@ -19,7 +19,7 @@ exports.excluirCurso = function (req, res, next) {
 exports.localizarCurso = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT c.id_curso, c.nome, c.ano, c.periodo, cor.nome AS coordenador
+        conn.query(`SELECT c.id_curso, c.nome, cor.nome AS coordenador
         FROM CURSO AS c
         JOIN COORDENADOR AS cor ON c.id_coordenador = cor.id_coordenador
         WHERE id_curso = ?`,
@@ -36,8 +36,6 @@ exports.localizarCurso = function (req, res) {
                     coordenador: {
                         id_curso: result[0].id_curso,
                         nome: result[0].nome,
-                        ano: result[0].ano,
-                        periodo: result[0].periodo,
                         coordenador: result[0].coordenador
                     }
                 }
@@ -51,7 +49,7 @@ exports.localizarCurso = function (req, res) {
 exports.listarCurso = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT c.id_curso, c.nome, c.ano, c.periodo, cor.nome as coordenador
+        conn.query(`SELECT c.id_curso, c.nome, cor.nome as coordenador
                     FROM CURSO as c join COORDENADOR AS cor on
                     c.id_coordenador = cor.id_coordenador`, 
             function (error, result) {
@@ -62,10 +60,8 @@ exports.listarCurso = function (req, res) {
                     Curso: result.map(curso => {
                         return {
                             id_curso: curso.id_curso,
-                            nome: curso.nome,
-                            ano: curso.ano,
-                            periodo: curso.periodo,
-                            coordenador: curso.coordenador
+                            nome:     curso.nome,
+                            coordenador: curso.coordenador,
                         }
                     })
                 }
@@ -81,11 +77,9 @@ exports.atualizarCurso = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'UPDATE CURSO SET nome=?, ano=?, periodo=?, id_coordenador=? WHERE id_curso=?',
+            'UPDATE CURSO SET nome=?, id_coordenador=? WHERE id_curso=?',
             [
                 req.body.nome,
-                req.body.ano,
-                req.body.periodo,
                 req.body.id_coordenador,
                 req.params.id_curso,
             ],
@@ -96,7 +90,6 @@ exports.atualizarCurso = function (req, res) {
                     coordenadorAtualizado: {
                         id_curso: req.params.id_curso,
                         nome: req.body.nome,
-                        ano: req.body.ano,
                         id_coordenador: req.body.id_coordenador,
                     }
                 }
@@ -117,7 +110,7 @@ exports.cadastrarCurso = function (req, res) {
             if (result.length > 0) {
                 res.status(409).send({ mensagem: 'Já existe um curso cadastrado com esse nome' })
             }else{
-                conn.query('INSERT INTO CURSO (nome, ano, periodo, id_coordenador) VALUES (? ,?, ?, ?)',
+                conn.query('INSERT INTO CURSO (nome, id_coordenador) VALUES (?, ?)',
                 [req.body.nome, req.body.ano,  req.body.periodo, req.body.id_coordenador],
                 function (error, result) {
                     if (error) { return res.status(500).send({ error: error }) }
@@ -125,8 +118,6 @@ exports.cadastrarCurso = function (req, res) {
                         mensagem: 'Registro salvo com sucesso!',
                         cursoCriado: {
                             nome: req.body.nome,
-                            ano: req.body.ano,
-                            periodo: req.body.periodo,
                             id_coordenador: req.body.id_coordenador,
                         }
                     }
