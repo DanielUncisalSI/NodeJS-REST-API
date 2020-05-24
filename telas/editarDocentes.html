@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/editarDocentes.css">
-    <script type="text/javascript" src="js/main.js"></script>
-
 
     <title>Editar Docentes</title>
 </head>
-<body>
+<body onload="verificaToken(); listarCursos(); localizar()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -31,7 +29,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">COORDENADOR <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrocoordenador.html">Cadatro Coordenador</a></li>
-                        <li><a href="editarCoordenador.html">Editar Coordenador</a></li>
                         <li><a href="buscarCoordernador.html">Buscar Coordenador</a></li>
                     </ul>
                 </li>
@@ -39,7 +36,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCENTES <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodocentes.html">Cadastro Docentes</a></li>
-                        <li><a href="editarDocentes.html">Editar Docentes</a></li>
                         <li><a href="buscarDocentes.html">Buscar Docentes</a></li>
                     </ul>
                 </li>
@@ -54,11 +50,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DISCIPLINA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodisciplinas.html">Cadastrar Disciplinas</a></li>
-                        <li><a href="editarDisciplina.html">Editar Disciplinas</a></li>
                         <li><a href="buscarDisciplinas.html">Buscar Disciplinas</a></li>
                     </ul>
                 </li>
-                <li><a href="index.html">SAIR</a></li>
+                <li id="sair"><a href="index.html">SAIR</a></li>
                 <li><a id="negrito" href="#">ADM</a></li>
                 
             </ul>
@@ -89,35 +84,23 @@
               <p> 
                 <div class="select">
                   <select name="cursos" id="cursos">
-                  <option selected disabled>Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
-                </select>
+                    <option selected disabled>Curso</option>
+
+                  </select>
                 </div>
               </p>
 
               <div class="salvar">
                 <h3 id="left">Sugestões de dia:</h3><br><p>
-                <span class="check"><input type="checkbox" name="1" value="1"> Segunda</span>
-                <span class="check"><input type="checkbox" name="2" value="2"> Terça</span>
-                <span><input type="checkbox" name="3" value="3"> Quarta</span></p>
+                <span class="check"><input type="checkbox" id="1" name="1" value=""> Segunda</span>
+                <span class="check"><input type="checkbox" id="2" name="2" value=""> Terça</span>
+                <span class="check"><input type="checkbox" id="3" name="3" value=""> Quarta</span></p>
                 <p>
-                <span class="check"><input type="checkbox" name="4" value="4"> Quinta</span>
-                <span><input type="checkbox" name="5" value="5"> Sexta</span></p>
+                <span class="check"><input type="checkbox" id="4" name="4" value=""> Quinta</span>
+                <span class="check"><input type="checkbox" id="5" name="5" value=""> Sexta</span></p>
             </div>
               <p> 
-                <input type="submit" value="Atualizar"/> 
+                <input type="submit" onclick="atulizar()" value="Atualizar"/> 
               </p>
             </form>
           </div>
@@ -125,8 +108,12 @@
       </div>
     </div>
  </form>
- <script src="js/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-	<script src="js/bootstrap.min.js"></script>
+ <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/docente.js"></script>
+   
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/distribuiçãoAutomático.css">
 
-    <script type="text/javascript" src="js/main.js"></script>
-
-
     <title>Distribuição Automático</title>
 </head>
-<body>
+<body onload="verificaToken()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -32,7 +29,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">COORDENADOR <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrocoordenador.html">Cadatro Coordenador</a></li>
-                        <li><a href="editarCoordenador.html">Editar Coordenador</a></li>
                         <li><a href="buscarCoordernador.html">Buscar Coordenador</a></li>
                     </ul>
                 </li>
@@ -40,7 +36,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCENTES <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodocentes.html">Cadastro Docentes</a></li>
-                        <li><a href="editarDocentes.html">Editar Docentes</a></li>
                         <li><a href="buscarDocentes.html">Buscar Docentes</a></li>
                     </ul>
                 </li>
@@ -55,11 +50,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DISCIPLINA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodisciplinas.html">Cadastrar Disciplinas</a></li>
-                        <li><a href="editarDisciplina.html">Editar Disciplinas</a></li>
                         <li><a href="buscarDisciplinas.html">Buscar Disciplinas</a></li>
                     </ul>
                 </li>
-                <li><a href="index.html">SAIR</a></li>
+                <li id="sair"><a href="index.html">SAIR</a></li>
                 <li><a id="negrito" href="#">ADM</a></li>
                 
             </ul>
@@ -179,8 +173,12 @@
         </div>
 </div>
     </div>
- <script src="js/jquery.min.js"></script>
- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
- <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/distAutomatico.js"></script>
+   
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-//Editar coordenador
-function editar(){
+//atulizar coordenador
+function atulizar(){
     var url = window.location.href
     var id_coordenador = url.split("=")[1]
 
@@ -31,8 +31,7 @@ function editar(){
   }
 
 //Fazer Login
-$(document).ready(function () {
-  $("#acessar").click(function () {
+function fazerLogin() {
     var email = $("#email").val();
     var senha = $("#senha").val();
     var login = "http://localhost:3000/coordenador/login";
@@ -52,18 +51,14 @@ $(document).ready(function () {
       },
       error: function (erro) {
         console.log(erro)
-        alert("Erro ao tentar acessar")
+        alert("E-mail e/ou senha incorretos")
         window.location.replace("index.html");
       }
     })
-  })
-})
-
-
-
+  }
 
 //Cadastrar coordenador
-       function cadastrar(){
+    function cadastrar(){
     var nome = $("#nome").val();
     var email = $("#email").val();
     var senha = $("#senha").val();
@@ -125,7 +120,7 @@ function listar() {
 //$(document).ready(function () {
 //$("#excluir").click(function () {
 function excluir() {
-  var matricula = $("#matricula").val();
+  //var matricula = $("#matricula").val();
   var url = window.location.href
   var id_coordenador = url.split("=")[1]
   var excluir = "http://localhost:3000/coordenador/excluir/" + id_coordenador;
@@ -133,7 +128,7 @@ function excluir() {
     type: "DELETE",
     url: excluir,
     dataType: "json",
-    data: { "matricula": matricula },
+    data: { "id_coordenador": id_coordenador },
     success: function (data) {
       console.log(data);
       alert("Coordenador excluido com sucesso!")
@@ -165,7 +160,7 @@ function localizar() {
       console.log(data)
     },
     error: function (erro) {
-      alert("Matricula não encontrada")
+      alert("registro não localizado")
 
     }
   })

@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/cadastrodisciplinas.css">
-    <script type="text/javascript" src="js/main.js"></script>
-
-
+  
     <title>Cadastro Disciplinas</title>
 </head>
-<body>
+<body onload="verificaToken(); listarCursos(); listarDocente()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -31,7 +29,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">COORDENADOR <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrocoordenador.html">Cadatro Coordenador</a></li>
-                        <li><a href="editarCoordenador.html">Editar Coordenador</a></li>
                         <li><a href="buscarCoordernador.html">Buscar Coordenador</a></li>
                     </ul>
                 </li>
@@ -39,7 +36,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCENTES <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodocentes.html">Cadastro Docentes</a></li>
-                        <li><a href="editarDocentes.html">Editar Docentes</a></li>
                         <li><a href="buscarDocentes.html">Buscar Docentes</a></li>
                     </ul>
                 </li>
@@ -54,11 +50,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DISCIPLINA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodisciplinas.html">Cadastrar Disciplinas</a></li>
-                        <li><a href="editarDisciplina.html">Editar Disciplinas</a></li>
                         <li><a href="buscarDisciplinas.html">Buscar Disciplinas</a></li>
                     </ul>
                 </li>
-                <li><a href="index.html">SAIR</a></li>
+                <li id="sair"><a href="index.html">SAIR</a></li>
                 <li><a id="negrito" href="#">ADM</a></li>
                 
             </ul>
@@ -94,46 +89,22 @@
               <p> 
                 <div class="select">
                   <select name="cursos" id="cursos">
-                  <option selected disabled>Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
+                    <option selected disabled>Curso</option>
+                
                 </select>
                 </div>
               </p>
 
               <p> 
                 <div class="select">
-                  <select name="Professor" id="professor">
+                  <select name="professor" id="professor">
                   <option selected disabled>Professor</option>
-                  <option value="Adriana de Medeiros Melo">Adriana de Medeiros Melo</option>
-                  <option value="Alberto Monteiro Peixoto">Alberto Monteiro Peixoto</option>
-                  <option value="Alberto Sandes de Lima">Alberto Sandes de Lima</option>
-                  <option value="Alessandro de Melo Omena">Alessandro de Melo Omena</option>
-                  <option value="Ana Elizabeth dos Santos Lins">Ana Elizabeth dos Santos Lins</option>
-                  <option value="Andreia Cristiane Teixeira Juelle">Andreia Cristiane Teixeira Juelle</option>
-                  <option value="Augusto César Alves de Oliveira">Augusto César Alves de Oliveira</option>
-                  <option value="Cícera Maria Alencar do Nascimento">Cícera Maria Alencar do Nascimento</option>
-                  <option value="Denise Cristina de Lima">Denise Cristina de Lima</option>
-                  <option value="Éder da Silva Rocha Santos">Éder da Silva Rocha Santos</option>
-                  <option value="Diego da Silva Novais">Diego da Silva Novais</option>
-                  <option value="Paulo Henrique Gomes Silva">Paulo Henrique Gomes Silva</option>
                 </select>
                 </div>
               </p>
               <p> 
                 <div class="select">
-                  <select name="Periodo" id="periodo">
+                  <select name="periodo" id="periodo">
                   <option selected disabled>Periodo</option>
                   <option value="1 Periodo">1° Periodo</option>
                   <option value="2 Periodo">2° Periodo</option>
@@ -148,7 +119,7 @@
                 </div>
               </p>
               <p> 
-                <input type="submit" value="Cadastrar"/> 
+                <input type="submit" onclick="cadastrar()" value="Cadastrar"/> 
               </p>
             </form>
           </div>
@@ -156,7 +127,11 @@
       </div>
     </div>
  </form>
- <script src="js/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+ <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+ <script type="text/javascript" src="js/main.js"></script>
+ <script type="text/javascript" src="js/disciplina.js"></script>
+
  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
  <script src="js/bootstrap.min.js"></script>
 </body>

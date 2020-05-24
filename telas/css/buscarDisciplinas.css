@@ -149,7 +149,7 @@ h4{
 	transition: all 0.2s linear;
   }
   input[type="submit"]{
-	width: 188px;
+	width: 150px;
 	cursor: pointer;  
 	background: black;
 	padding: 8px 5px;

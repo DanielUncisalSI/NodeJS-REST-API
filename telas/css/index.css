@@ -29,7 +29,7 @@ font-size: 15px;
 left: 50px;
 font-weight: bold;
 }
-#campo{
+.campo{
 width: 20vw;
 height: 30px;
 border-width: thin;

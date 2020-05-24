@@ -1,4 +1,13 @@
 #Listar coordenadores
+post http://localhost:3000/coordenador/cadastrar
+{
+ "nome":"Alex Melo",   
+ "email":"alex@gmail.com",
+ "senha":"123456",
+ "matricula":"987654"
+ 
+}
+###
 get http://localhost:3000/coordenador/listar
 Content-Type: application/json
 
@@ -10,4 +19,21 @@ Content-Type: application/json
 {
  "email":"paulo@gmail.com",
  "senha":"123456"
+}
+###
+get http://localhost:3000/docente/listar
+
+###
+get http://localhost:3000/docente/localizar/4
+
+###
+get http://localhost:3000/curso/listar
+###
+post  http://localhost:3000/docente/cadastrar
+Content-Type: application/json
+{
+    "nome":"mestre",
+    "matricula":"33333",
+    "id_curso": 6,
+    "dias":"segunda-terça-quarta"
 }

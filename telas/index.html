@@ -5,13 +5,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script src = "https://code.jquery.com/jquery-3.4.1.min.js" 
-    integridade = "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo =" 
-    crossorigin = "anônimo" > </script>  
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/coordenador.js"></script>
-    
+ 
 </head>
 <body>
     <div class="container">
@@ -19,23 +13,26 @@
         <form action="index.html" action="POST"><p>
             <img src="img/uncii.png" width="20%" height="20%"><br>
             <h7 id="negrito">SDHD - Sistema de Distribuição de Horário Docente</h7></p><p>
-            <input id="campo" type="text" name="email" placeholder="E-mail:"></p><p>
-            <input id="campo" type="password" name="senha" placeholder="Senha:"><br></p>
+            <input id="email" type="text" class="campo" placeholder="E-mail:"></p><p>
+            <input id="senha" type="password" class="campo" placeholder="Senha:"><br></p>
             <div class=" salvar">
                 <span class="salvar"><input type="checkbox" name="1" value="1"> Deseja salvar as informações ?
                 </span>
             </div>
             <p></p>
-            <input id="botao" type="submit" name="login"  value="Entrar" placeholder="Entrar">
+            <input id="botao" type="submit" onclick="fazerLogin()" value="Entrar" placeholder="Entrar">
             <br><p></p>
             <a href="esqueciSenha.html">Esqueceu sua senha ?</a>
         </form></p>
         </div>
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </div>   
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script type="text/javascript" src="js/coordenador.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+   
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
 </body>
     
 </html>

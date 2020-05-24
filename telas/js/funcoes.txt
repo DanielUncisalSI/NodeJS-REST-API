@@ -1,5 +1,4 @@
 https://obfuscator.io/
-
 //verifica se não está logado
 function verificaLogoff(){
 if (localStorage.getItem("token")){
@@ -8,14 +7,14 @@ if (localStorage.getItem("token")){
 }
 }
 
-//function verificaToken(){
-  //if (localStorage.getItem("token")){
-   // console.log("Acesso permitido")
-    //}else{
-    //alert("Voce precisa está logado");
-    //window.location.replace("index.html");
- // }
-//}
+function verificaToken(){
+  if (localStorage.getItem("token")){
+   console.log("Acesso permitido")
+    }else{
+    alert("Voce precisa está logado");
+    window.location.replace("index.html");
+ }
+}
 
 
 //remove o localStorage

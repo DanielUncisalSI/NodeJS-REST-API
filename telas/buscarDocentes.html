@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/buscarDocentes.css">
-
-    <script type="text/javascript" src="js/main.js"></script>
-
-
+  
     <title>Buscar Docentes</title>
 </head>
-<body>
+<body onload="verificaToken(); listarCursos(); listar()" >
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -32,7 +29,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">COORDENADOR <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrocoordenador.html">Cadatro Coordenador</a></li>
-                        <li><a href="editarCoordenador.html">Editar Coordenador</a></li>
                         <li><a href="buscarCoordernador.html">Buscar Coordenador</a></li>
                     </ul>
                 </li>
@@ -40,7 +36,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCENTES <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodocentes.html">Cadastro Docentes</a></li>
-                        <li><a href="editarDocentes.html">Editar Docentes</a></li>
                         <li><a href="buscarDocentes.html">Buscar Docentes</a></li>
                     </ul>
                 </li>
@@ -55,11 +50,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DISCIPLINA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="cadastrodisciplinas.html">Cadastrar Disciplinas</a></li>
-                        <li><a href="editarDisciplina.html">Editar Disciplinas</a></li>
                         <li><a href="buscarDisciplinas.html">Buscar Disciplinas</a></li>
                     </ul>
                 </li>
-                <li><a href="index.html">SAIR</a></li>
+                <li id="sair"><a href="index.html">SAIR</a></li>
                 <li><a id="negrito" href="#">ADM</a></li>
             </ul>
         </div>
@@ -72,43 +66,14 @@
   <div class="content">      
     <!--FORMULÁRIO DE LOGIN-->
       <form method="post" action=""> 
-       <form method="post" action="">  <br>
+       <form method="post" action=""> 
               <h4 class="aa">Docentes</h4> 
-              <br>
-              <p> 
-                <div class="select">
-                  <select name="Curso" id="option">
-                  <option selected disabled>Selecione Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
-                </select>
-                </div>
-              </p>
-
+              
               <p class="campo"> 
                 <label for="matricula_cad"></label>
-                <input id="matricula" name="matricula" required="required" type="text" placeholder="Matricula"/>
-              </p>
-              
-              <p class="campo1"> 
-                <label for="nome_cad"></label>
-                <input id="nome" name="nome" required="required" type="text" placeholder="Nome" />
-              </p>
-
-              <p> 
-                <input type="submit" value="Buscar"/> 
-              </p>
+                <input id="myInput" name="myInput" type="text" placeholder="localizar..."/>
+              </p><br><br>
+            
             </form>
             <hr>
             <table>
@@ -118,42 +83,25 @@
                 <th class="m">MATRÍCULA</th>
                 <th class="c">CURSO</th>
                 <th class="e">SUGESTÕES DE DIAS</th>
-                <th></th>
+                <th           >AÇÕES</th>
               </tr>
               </thead>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button ><a class="preto" href="editarDocentes.html">EDITAR</a> </button>
-                  <button ><a class="preto" href="">EXCLUIR</a> </button></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <tbody id="corpo">
+     
+              </tbody>
+              
             </table><br><br>
-            <p> 
-              <input type="submit" value="Imprimir"/> 
-            </p>
+            
       </form>
       </div>
     </div>
   </div>
-
- <script src="js/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-	<script src="js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/docente.js"></script>
+ 
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

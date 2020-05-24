@@ -86,7 +86,7 @@ exports.atualizarDocente = function (req, res) {
             'UPDATE DOCENTE SET nome=?, matricula=?, id_curso=?, dias=? WHERE id_docente=?',
             [
                 req.body.nome,
-                req.body.matriula,
+                req.body.matricula,
                 req.body.id_curso,
                 req.body.dias,
                 req.params.id_docente,
@@ -125,9 +125,9 @@ exports.cadastrarDocente = function (req, res) {
                     mensagem: 'Registro salvo com sucesso!',
                     DocenteCriado: {
                         nome: req.body.nome,
-                        ano: req.body.matricula,
-                        periodo: req.body.id_curso,
-                        id_coordenador: req.body.dias,
+                        matricula: req.body.matricula,
+                        curso: req.body.id_curso,
+                        dias: req.body.dias,
                     }
                 }
                 return res.status(201).send({ response })
