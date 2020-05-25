@@ -1,33 +1,33 @@
 //atulizar coordenador
-function atulizar(){
-    var url = window.location.href
-    var id_coordenador = url.split("=")[1]
+function editar(){
+  var url = window.location.href
+  var id_coordenador = url.split("=")[1]
+  
+  var matricula = $("#matricula").val();
+  var nome = $("#nome").val();
+  var email = $("#email").val();
+  var atualizar = "http://localhost:3000/coordenador/atualizar/" + id_coordenador;
 
-    var matricula = $("#matricula").val();
-    var nome = $("#nome").val();
-    var email = $("#email").val();
-    var atualizar = "http://localhost:3000/coordenador/atualizar/" + id_coordenador;
-
-    event.preventDefault();
-    $.ajax({
-      type: "PATCH",
-      url: atualizar,
-      dataType: "json",
-      data: {
-        "matricula": matricula,
-        "nome": nome,
-        "email": email
-      },
-      success: function (data) {
-        console.log(data);
-        alert("Registro atualizado com sucesso")
-        window.location.replace("buscarCoordernador.html");
-      },
-      error: function (erro) {
-        alert("Erro ao tentar atualizar o registro")
-        console.log(erro)
-      }
-    })
+  event.preventDefault();
+  $.ajax({
+    type: "PATCH",
+    url: atualizar,
+    dataType: "json",
+    data: {
+      "matricula": matricula,
+      "nome": nome,
+      "email": email
+    },
+    success: function (data) {
+      console.log(data);
+      alert("Registro atualizado com sucesso")
+      window.location.replace("buscarCoordernador.html");
+    },
+    error: function (erro) {
+      alert("Erro ao tentar atualizar o registro")
+      console.log(erro)
+    }
+  })
   }
 
 //Fazer Login
@@ -134,8 +134,8 @@ function excluir() {
       window.location.replace("buscarCoordernador.html");
     },
     error: function (erro) {
-      console.log(erro)
-      alert(erro)
+      console.log(erro+" possivelmente existe referencia com outra tabela")
+      alert(erro+ " Erro ao tentar excluir")             
     }
   })
 }

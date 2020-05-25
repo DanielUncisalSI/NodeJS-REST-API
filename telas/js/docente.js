@@ -1,5 +1,5 @@
 //Atualizar docente
-function atulizar(){
+function atualizar(){
     var url = window.location.href
     var id_docente = url.split("=")[1]
 

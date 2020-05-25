@@ -19,7 +19,7 @@ exports.excluirCurso = function (req, res, next) {
 exports.localizarCurso = function (req, res) {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
-        conn.query(`SELECT c.id_curso, c.nome, cor.nome AS coordenador
+        conn.query(`SELECT c.id_curso, c.nome, cor.id_coordenador as id_coordenadores, cor.nome AS coordenador
         FROM CURSO AS c
         JOIN COORDENADOR AS cor ON c.id_coordenador = cor.id_coordenador
         WHERE id_curso = ?`,
@@ -33,10 +33,11 @@ exports.localizarCurso = function (req, res) {
                     })
                 }
                 const response = {
-                    coordenador: {
+                    curso: {
                         id_curso: result[0].id_curso,
                         nome: result[0].nome,
-                        coordenador: result[0].coordenador
+                        coordenador: result[0].coordenador,
+                        id_coordenadores: result[0].id_coordenadores
                     }
                 }
                 return res.status(200).send(response)
@@ -111,7 +112,7 @@ exports.cadastrarCurso = function (req, res) {
                 res.status(409).send({ mensagem: 'Já existe um curso cadastrado com esse nome' })
             }else{
                 conn.query('INSERT INTO CURSO (nome, id_coordenador) VALUES (?, ?)',
-                [req.body.nome, req.body.ano,  req.body.periodo, req.body.id_coordenador],
+                [req.body.nome, req.body.id_coordenador],
                 function (error, result) {
                     if (error) { return res.status(500).send({ error: error }) }
                     var response = {

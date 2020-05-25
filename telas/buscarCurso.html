@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/buscarDocentes.css">
+    <link rel="stylesheet" type="text/css" href="css/buscarCurso.css">
   
-    <title>Buscar Docentes</title>
+    <title>Buscar Curso</title>
 </head>
-<body onload="verificaToken(); listarCursos(); listar()" >
+<body onload="verificaToken(); listar()" >
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -74,22 +74,22 @@
     <!--FORMULÁRIO DE LOGIN-->
       <form method="post" action=""> 
        <form method="post" action=""> 
-              <h4 class="aa">Docentes</h4> 
-              
+              <h4 class="aa">Curso</h4> 
               <p class="campo"> 
-                <label for="matricula_cad"></label>
+                <label for="nome_curso"></label>
                 <input id="myInput" name="myInput" type="text" placeholder="localizar..."/>
-              </p><br><br>
-            
+              </p>
+              <br><br>
+             
             </form>
+           
             <hr>
             <table>
+            
               <thead>
               <tr>
                 <th class="n">NOME</th>
-                <th class="m">MATRÍCULA</th>
-                <th class="c">CURSO</th>
-                <th class="e">SUGESTÕES DE DIAS</th>
+                <th class="m">COORDENADOR</th>
                 <th           >AÇÕES</th>
               </tr>
               </thead>
@@ -106,7 +106,7 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>  
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/docente.js"></script>
+  <script type="text/javascript" src="js/curso.js"></script>
  
   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>
