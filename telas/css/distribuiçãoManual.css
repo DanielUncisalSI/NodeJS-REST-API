@@ -5,21 +5,7 @@ table, td, th {
 	text-align: center;
 	padding: 3px;
   }
-  @media (min-width: 768px) {
-	table, td, th {
-	  width: 750px;
-	}
-  }
-  @media (min-width: 992px) {
-	table, td, th {
-	  width: 970px;
-	}
-  }
-  @media (min-width: 1200px) {
-	table, td, th {
-	  width: 1170px;
-	}
-  }
+  
   #curso{
 	width: 23em;
 	height: 2.6em;
@@ -76,6 +62,42 @@ table, td, th {
 	left: -670px;
 	top: -138px;
 }
+@media (min-width: 360px) {
+	table {
+	  width: 360px;
+	  left: -190px;
+	  top: -120px;
+	}
+	hr {
+		width: 400px;
+		left: -200px;
+		top: -135px;
+	}
+  }
+  @media (min-width: 720px) {
+	table {
+	  width: 710px;
+	  left: -355px;
+	  top: -200px;
+	}
+	hr {
+		width: 731px;
+		left: -365px;
+		top: -200px;
+	}
+  }
+  @media (min-width: 1356px) {
+	table {
+	  width: 1300px;
+	  left: -650px;
+	  top: -122px;
+	}
+	hr {
+		width: 1340px;
+		left: -670px;
+		top: -138px;
+	}
+  }
 .campo{
 	position: relative;
 	left: -300px;
@@ -126,6 +148,53 @@ overflow: hidden;
 	color:black;
 	cursor: pointer;	
   }
+  @media (min-width: 360px) {
+	.select1 {
+	  top: -150px; 
+	  left: -150px;
+	  width: 290px;
+	}
+	.select {
+		top: -195px;
+		left: -150px;
+		width: 290px;
+	}
+	.select2{
+		top: -105px;
+		left: -150px;
+		width: 290px;
+	}
+	
+}
+@media (min-width: 720px) {
+	.select{
+		top: -175px;
+	width: 300px;
+	left: -300px;
+	}
+	.select1{
+		left: 10px;
+		top: -222px;
+	width: 300px;
+	}
+	
+}
+@media (min-width: 1356px) {
+	.select{
+		top: -180px;
+	width: 300px;
+	left: -150px;
+	}
+	.select1{
+		left: -330px;
+		top: -135px;
+	width: 300px;
+	}
+	.select2{
+		top: -135px;
+		left: 15px;
+	}
+}
 .preto{
     font-weight: bold;
 }
@@ -192,6 +261,21 @@ h4{
   input[type="submit"]:hover{
 	background: #4ab3c6;
   }
+  @media (min-width: 360px) {
+	input[type="submit"]{
+		top: -130px;
+	}
+}
+@media (min-width: 720px) {
+  input[type="submit"]{
+	  top: -150px;
+  }
+}
+@media (min-width: 1356px) {
+  input[type="submit"]{
+	  top: -150px;
+  }
+}
   #cadastro{
 	  text-align: center;
 	position: relative;
@@ -203,6 +287,31 @@ h4{
 	background: rgb(247, 247, 247);
 	border-radius: 5px;
   }
+  @media (min-width: 360px) {
+	#cadastro {
+	  padding: 300px 200px;
+	  left: -5px;
+	}
+	.aa{
+		top: -290px;
+	}
+  }
+  @media (min-width: 720px) {
+	#cadastro {
+	  padding: 260px 365px;
+	  left: -15px;
+	}
+  }
+  @media (min-width: 1356px) {
+	#cadastro {
+	 padding: 260px 670px;
+	 left: -100px;
+	}
+	.aa{
+		top: -250px;
+	}
+  }
+
   #paralogin:target ~ .content #login{
 	z-index: 2;
 	-webkit-animation-name: fadeInLeft;
@@ -592,3 +701,4 @@ h4{
   #negrito{
 	font-weight: bold;
   }
+  

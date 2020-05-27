@@ -1,5 +1,5 @@
 #cursos{
-	width: 23em;
+	width: 95%;
 	height: 2.6em;
 	border-radius: 3px;
 }
@@ -96,7 +96,7 @@ h1 {
    position: absolute;
    top: 90px;
    width: 85%;   
-   left: 50px;
+   left: 0px;
    padding: 10px 50px;
    margin: 0 0 0px 0;
    background: rgb(247, 247, 247);
@@ -109,6 +109,17 @@ h1 {
    animation-timing-function: ease;
    animation-fill-mode: both;
  }
+ @media (min-width: 360px) {
+	#cadastro {
+	  width: 350px;
+	
+  }
+}
+@media (min-width: 768px) {
+	#cadastro {
+	  width: 450px;
+	}
+}
  #paralogin:target ~ .content #login{
    z-index: 2;
    -webkit-animation-name: fadeInLeft;

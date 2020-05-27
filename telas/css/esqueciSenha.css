@@ -50,6 +50,27 @@ font-weight: bold;
     width: 40%;
 	height: 50%;
 }
+@media (min-width: 360px) {
+	#formulario {
+	  width: 350px;
+	  height: 300px;
+	}
+	#campo{
+		width: 70%;
+	}
+  }
+@media (min-width: 768px) {
+	#formulario {
+	  width: 450px;
+	}
+	#campo{
+		width: 65%;
+	}
+	#botao{
+		width: 65%;
+	}
+  }
+ 
 /* text-align: center;
 	width: 32vw;
 	height: 53vh;

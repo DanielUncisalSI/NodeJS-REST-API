@@ -30,15 +30,15 @@ left: 50px;
 font-weight: bold;
 }
 .campo{
-width: 20vw;
-height: 30px;
+width: 19vw;
+height: 35px;
 border-width: thin;
 border-color: black;
 padding: 0px 5px;
 }
 #botao{
-width: 20vw;
-
+width: 19vw;
+height: 35px;
 background-color: black;
 color: white;
 border-radius: 5px;
@@ -55,6 +55,26 @@ font-weight: bold;
 	background: white;
 	width: 40%;
 }
+@media (min-width: 360px) {
+	#formulario {
+	  width: 350px;
+	}
+	.campo{
+		width: 70%;
+	}
+  }
+@media (min-width: 768px) {
+	#formulario {
+	  width: 450px;
+	}
+	.campo{
+		width: 65%;
+	}
+	#botao{
+		width: 65%;
+	}
+  }
+ 
 /* text-align: center;
 	width: 32vw;
 	height: 53vh;
