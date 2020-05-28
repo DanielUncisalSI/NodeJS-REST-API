@@ -41,8 +41,7 @@ $(document).ready(function () {
    })
 
 
-//<input class="form-control" id="myInput" type="text" placeholder="Localizar..">
-
+//localizar qualquer campo na tabela
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
