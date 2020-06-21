@@ -42,8 +42,8 @@ function atualizar(){
         window.location.replace("buscarDocentes.html");
       },
       error: function (erro) {
-        alert("Erro ao tentar atualizar o registro")
         console.log(erro)
+        alert("Erro ao tentar atualizar o registro")
       }
     })
   }
@@ -81,13 +81,13 @@ function atualizar(){
         "nome": nome, "matricula": matricula, "id_curso": cursos, "dias":dias
       },
       success: function (data) {
-        alert("Operação realizado com sucesso ")
         console.log(data)
+        alert("Operação realizado com sucesso ")
         window.location.replace("buscarDocentes.html");
       },
       error: function (erro) {
-        alert("Erro ao realizar a operação ")
         console.log(erro)
+        alert("Erro ao realizar a operação ")
       }
     })
   }
@@ -103,6 +103,7 @@ function listar() {
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
@@ -117,7 +118,6 @@ function listar() {
             + '<a href="excluirDocente.html?id=' + item[i].id_docente + '"' + '+ onclick="excluir()" >Excluir</a>'
             + '</td>';
           corpoTabela.append(row);
-
         }
       })
     })
@@ -161,18 +161,18 @@ function localizar() {
     type: "GET",
     dataType: "json",
     success: function (data) {
+      console.log(data)
       $("#nome").val(data.Docente.nome);
       $("#matricula").val(data.Docente.matricula);
       $("#cursos").val(data.Docente.id_cursos);
-      console.log(data)
     },
     error: function (erro) {
+      console.log(erro)
       alert("registro não localizado")
 
     }
   })
 }
-
 
 function listarCursos(){
   var selecao = $('#cursos');
@@ -182,6 +182,7 @@ function listarCursos(){
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
 
@@ -194,6 +195,7 @@ function listarCursos(){
     })
   })
 }
+
 
 //EM TESTE
 /*function listarCoordenador() {

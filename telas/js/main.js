@@ -36,7 +36,7 @@ $(document).ready(function () {
 //mostrar usuario logado:
   $(document).ready(function(){
     if(localStorage.getItem("usuario")){ 
-    document.getElementById("negrito").innerText = localStorage.getItem("usuario");
+    document.getElementById("negrito").innerText = 'Usuário: '+localStorage.getItem("usuario");
     }
    })
 

@@ -21,8 +21,8 @@ function atualizar() {
       window.location.replace("buscarCurso.html");
     },
     error: function (erro) {
-      alert("Erro ao tentar atualizar o registro")
       console.log(erro)
+      alert("Erro ao tentar atualizar o registro")
     }
   })
 }
@@ -42,13 +42,13 @@ function cadastrar() {
       "nome": nome, "id_coordenador": id_coordenador
     },
     success: function (data) {
-      alert("Operação realizado com sucesso ")
       console.log(data)
+      alert("Operação realizado com sucesso ")
       window.location.replace("buscarCurso.html");
     },
     error: function (erro) {
-      alert("Erro ao realizar a operação ")
       console.log(erro)
+      alert("Erro ao realizar a operação ")
     }
   })
 }
@@ -64,6 +64,7 @@ function listar() {
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
@@ -120,11 +121,12 @@ function localizar() {
     type: "GET",
     dataType: "json",
     success: function (data) {
+      console.log(data)
       $("#nome").val(data.curso.nome);
       $("#id_coordenador").val(data.curso.id_coordenadores);
-      console.log(data)
     },
     error: function (erro) {
+      console.log(erro)
       alert("registro não localizado")
 
     }
@@ -135,6 +137,7 @@ function localizar() {
 
 
 //EM TESTE
+
 function listarCoordenador() {
   var selecao = $('#id_coordenador');
   var listar = "http://localhost:3000/coordenador/listar";
@@ -143,6 +146,7 @@ function listarCoordenador() {
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
 

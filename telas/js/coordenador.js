@@ -26,8 +26,8 @@ function editar(){
       window.location.replace("buscarCoordernador.html");
     },
     error: function (erro) {
-      alert("Erro ao tentar atualizar o registro")
       console.log(erro)
+      alert("Erro ao tentar atualizar o registro")
     }
   })
   }
@@ -37,14 +37,14 @@ function fazerLogin() {
     var email = $("#email").val();
     var senha = $("#senha").val();
     var login = "http://localhost:3000/coordenador/login";
-
+    
     event.preventDefault();
     $.ajax({
       type: "POST",
       url: login,
       dataType: "json",
       data: { "email": email, "senha": senha },
-      success: function (data) {
+      success: function (data){
         console.log(data);
         alert("Acesso Permitido");
         localStorage.setItem("token", data.token);
@@ -58,6 +58,8 @@ function fazerLogin() {
       }
     })
   }
+
+
 
 //Cadastrar coordenador
     function cadastrar(){
@@ -76,13 +78,13 @@ function fazerLogin() {
         "matricula": matricula
       },
       success: function (data) {
+        console.log(data);
         alert("Operação realizado com sucesso ")
-        console.log(data)
         window.location.replace("buscarCoordernador.html");
       },
       error: function (erro) {
-        alert("Erro ao realizar a operação ")
         console.log(erro)
+        alert("Erro ao realizar a operação ")
       }
     })
   }
@@ -98,6 +100,7 @@ function listar() {
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data);
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
@@ -105,13 +108,13 @@ function listar() {
             '<td>' + item[i].nome + '</td>'
             + '<td>' + item[i].matricula + '</td>'
             + '<td>' + item[i].email + '</td>'
-            + '<td>'
+            + '<td>'                            //class="btn btn-default"
             + '<a href="editarCoordenador.html?id=' + item[i].id_coordenador + ' "' + '>Editar</a>' + ' '
             + '<a href="excluirCoordenador.html?id=' + item[i].id_coordenador + '"' + '+ onclick="excluir()" >Excluir</a>'
             + '</td>';
-          corpoTabela.append(row);
-
+          corpoTabela.append(row);    
         }
+        
       })
     })
   })
@@ -136,8 +139,9 @@ function excluir() {
       window.location.replace("buscarCoordernador.html");
     },
     error: function (erro) {
-      console.log(erro+" possivelmente existe referencia com outra tabela")
-      alert(erro+ " Erro ao tentar excluir")             
+      alert(erro+ " Erro ao tentar excluir")
+      console.log(erro+" possivelmente existe referência com outra tabela ou não autorizado")     
+      window.location.replace("buscarCoordernador.html");        
     }
   })
 }
@@ -155,14 +159,14 @@ function localizar() {
     type: "GET",
     dataType: "json",
     success: function (data) {
+      console.log(data);
       $("#nome").val(data.coordenador.nome);
       $("#email").val(data.coordenador.email);
       $("#matricula").val(data.coordenador.matricula);
-      console.log(data)
     },
     error: function (erro) {
+      console.log(erro)
       alert("registro não localizado")
-
     }
   })
 }

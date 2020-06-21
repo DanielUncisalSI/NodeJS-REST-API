@@ -105,13 +105,13 @@ exports.atualizaCoordenador = function (req, res) {
 exports.cadastrarCoordenador = function (req, res) {
     mysql.getConnection(function (error, conn) {
         if (error) { return res.status(500).send({ erro: error }) }
-        conn.query('SELECT * FROM COORDENADOR WHERE matricula = ?',
-            [req.body.matricula],
+        conn.query('SELECT * FROM COORDENADOR WHERE email = ?',
+            [req.body.email],
             function (error, result) {
                 conn.release()
                 if (error) { return res.status(500).send({ error: error }) }
                 if (result.length > 0) {
-                    res.status(409).send({ mensagem: 'Já existe um coordenador cadastrado com essa matricula' })
+                    res.status(409).send({ mensagem: 'Já existe um coordenador cadastrado com esse email' })
                 } else {
                     bcrypt.hash(req.body.senha, 10, function (errBcrypt, hash) {
                         if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }

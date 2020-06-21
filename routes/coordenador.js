@@ -5,7 +5,7 @@ const login = require('../middleware/login');
 
 
 router.delete('/excluir/:id_coordenador', coordenadorController.excluirCoordenador);
-router.patch('/atualizar/:id_coordenador', coordenadorController.atualizaCoordenador)
+router.patch('/atualizar/:id_coordenador',coordenadorController.atualizaCoordenador)
 router.get('/localizar/:id_coordenador', coordenadorController.localizaCoordenador)
 router.get('/listar', coordenadorController.listaCoordenador)
 router.post('/cadastrar', coordenadorController.cadastrarCoordenador)

@@ -7,7 +7,7 @@
 
     <title>Distribuição Automático</title>
 </head>
-<body onload="verificaToken()">
+<body onload="verificaToken(); listarCursos()">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -80,21 +80,9 @@
         
               <p> 
                 <div class="select">
-                  <select name="Curso" id="curso">
-                  <option selected disabled>Selecione Curso</option>
-                  <option value="Sistemas para Internet">Sistemas para Internet</option>
-                  <option value="Enfermagem">Enfermagem</option>
-                  <option value="Fisioterapia">Fisioterapia</option>
-                  <option value="Fonoaudiologia">Fonoaudiologia</option>
-                  <option value="Medicina">Medicina</option>
-                  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                  <option value="Alimentos">Alimentos</option>
-                  <option value="ADS">ADS</option>
-                  <option value="Gestão Hospitalar">Gestão Hospitalar</option>
-                  <option value="Processos Gerenciais">Processos Gerenciais</option>
-                  <option value="Radiologia">Radiologia</option>
-                  <option value="Segurança no Trabalho">Segurança no Trabalho</option>
-                  <option value="Sistemas Biomedicos">Sistemas Biomedicos</option>
+                  <select name="Curso" id="cursos">
+                    <option selected disabled>Selecione Curso</option>
+                  
                 </select>
                 </div>
               </p>

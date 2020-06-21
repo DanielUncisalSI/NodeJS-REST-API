@@ -1,3 +1,4 @@
+
 //Atualizar coordenador
 function atualizar(){
     var url = window.location.href
@@ -24,8 +25,8 @@ function atualizar(){
         window.location.replace("buscarDisciplinas.html");
       },
       error: function (erro) {
-        alert("Erro ao tentar atualizar o registro")
         console.log(erro)
+        alert("Erro ao tentar atualizar o registro")
       }
     })
   }
@@ -48,13 +49,13 @@ function atualizar(){
         "id_docente": id_docente, "periodo": periodo
       },
       success: function (data) {
-        alert("Operação realizado com sucesso ")
         console.log(data)
+        alert("Operação realizado com sucesso ")
         window.location.replace("buscarDisciplinas.html");
       },
       error: function (erro) {
-        alert("Erro ao realizar a operação ")
         console.log(erro)
+        alert("Erro ao realizar a operação ")
       }
     })
   }
@@ -70,6 +71,7 @@ function listar() {
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
           var row = document.createElement('tr');
@@ -129,12 +131,13 @@ function localizar(){
     type: "GET",
     dataType: "json",
     success: function (data) {
+     console.log(data)
      $("#disciplina").val(data.disciplina.nome);
      $("#cursos").val(data.disciplina.id_cursos);
      $("#professor").val(data.disciplina.id_docentes);
-      console.log(data)
     },
     error: function (erro) {
+      console.log(erro)
       alert("registro não localizado")
 
     }
@@ -150,6 +153,7 @@ function listarCursos(){
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
 
@@ -171,6 +175,7 @@ function listarDocente(){
     type: "GET",
     dataType: "json",
     success: (function (data) {
+      console.log(data)
       $.each(data, function (index, item) {
         for (var i = 0; i < item.length; i++) {
 
@@ -183,6 +188,8 @@ function listarDocente(){
     })
   })
 }
+
+
 
 
 //EM TESTE

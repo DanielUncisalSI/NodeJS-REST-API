@@ -9,7 +9,7 @@ const rotaCurso = require('./routes/curso')
 const rotaDisciplina = require('./routes/disciplina');
 const rotaDocente = require('./routes/docente');
 
-var cors = require('cors');
+//var cors = require('cors');
 
 app.use(express.json())
 app.use(bodyParser.urlencoded(

@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 
 exports.obrigatorio =(req, res, next)=>{
     try {
-        const token = req.headers.authorization.split(' ')[1]
+        const token =   req.body.authorization.split('')[1]
+        //const token = req.headers.authorization.split(' ')[1]
         const decode = jwt.verify(token, process.env.JWT_KEY);
         res.usuario = decode;
         next();
